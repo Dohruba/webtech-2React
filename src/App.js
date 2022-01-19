@@ -15,6 +15,7 @@ function App() {
         </h3>
         <LoginForm />
         <MyMap/>
+
       </main>
       <footer>© 2021</footer>
     </div>

@@ -69,8 +69,10 @@ header {
 main {
     grid-area: main;
     line-height: 30px; 
-    padding: 40px;
-    overflow-y: scroll;
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 5px;
 }
 
 aside{
@@ -224,7 +226,7 @@ a{
         font-size: 11px;        
         justify-items: center;
         overflow-y: auto;
-        height:400px;
+        height:100vh;
     }
     aside{
         grid-area: aside;
