@@ -5,10 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom';
 
-import LoginPage from './components/LoginPage';
-import TripEditor from './components/TripEditor';
-import TripAdder from './components/TripAdder';
-import Map from './components/Map';
+import LoginPage from './components/login/LoginPage';
+import TripEditor from './components/trips/TripEditor';
+import TripAdder from './components/trips/TripAdder';
+import Map from './components/map/Map';
 import Header from "./components/structure/Header";
 
 ReactDOM.render(

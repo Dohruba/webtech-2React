@@ -1,5 +1,5 @@
-import './styles.css';
-import logo from '../images/globe.png';
+import '../styles.css';
+import logo from '../../images/globe.png';
 import LoginForm from './LoginForm';
 import React from 'react';
 

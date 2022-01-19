@@ -1,9 +1,9 @@
 //for editing and deleting trips
 
-import Api from "../services/Api";
-import Header from "./structure/Header";
-import Footer from "./structure/Footer";
-import "./styles.css";
+import Api from "../../services/Api";
+import Header from "../structure/Header";
+import Footer from "../structure/Footer";
+import '../styles.css';
 import React, { useState } from "react";
 
 function TripEditor(){

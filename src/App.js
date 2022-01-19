@@ -1,6 +1,6 @@
 import './components/styles.css';
 import logo from './images/globe.png';
-import LoginForm from './components/LoginForm';
+import LoginForm from './components/login/LoginForm';
 import React from 'react';
 
 function App() {
