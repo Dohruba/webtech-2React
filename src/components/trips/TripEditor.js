@@ -5,19 +5,34 @@ import Header from "../structure/Header";
 import Footer from "../structure/Footer";
 import '../styles.css';
 import React, { useState } from "react";
+import TripForm from "./TripForm";
+import { useParams } from 'react-router-dom';
 
-function TripEditor(){
+function TripEditor({history, trips, setTrips}){
+
+    const {id} = useParams();
+    const tripToEdit = trips.find((trip) => trip.id === id);
+
+    const handleOnSubmit = (trip) => {
+      const filteredTrips = trips.filter((trip) => trip.id !== id);
+      setTrips([trip, ...filteredTrips]);
+      history.push('/');
+    }
 
     //connect Frontend to Backend
     // const BASE_URL = "https://travelsitebackend.herokuapp.com";
     const BASE_URL = "http://localhost:5000";
-    let dataArray = [];
-    var arrayLength = 0;
+    
+    // let dataArray = [];
+    // var arrayLength = 0;
 
     return(
         <Header/>,
-        <div>
-        <h2>Meine Reisen: </h2>
+        <TripForm trip={tripToEdit} handleOnSubmit={handleOnSubmit}/>,
+        
+        {/*
+          <div>
+          <h2>Meine Reisen: </h2>
             <div id="btnWrapper">
             <table class="triptable">
                 <thead>
@@ -31,8 +46,9 @@ function TripEditor(){
             <tbody>
             </tbody>
             </table>
-            </div>
-        </div>,
+            </div> 
+          </div>*/}
+        ,
         <Footer/>
     );
 

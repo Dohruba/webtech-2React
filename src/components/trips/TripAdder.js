@@ -11,13 +11,14 @@ import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom';
 //for testing
 import useLocalStorage from '../../hooks/useLocalStorage';
 
-const TripAdder = () =>{
+const TripAdder = ({history}) =>{
     
     const [trips, setTrips] = useLocalStorage('trips', []);
 
     const handleOnSubmit = (trip) => {
-        console.log(trip);
+        //console.log(trip);
         setTrips([...trips, trip]);
+        history.push('/');
       };
 
     return(
