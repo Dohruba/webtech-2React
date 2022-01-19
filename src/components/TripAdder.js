@@ -5,6 +5,7 @@ import Header from './structure/Header';
 import Footer from './structure/Footer';
 import TripForm from './TripForm';
 import TripList from './TripList';
+import './styles.css';
 
 const TripAdder = () =>{
 
@@ -13,12 +14,12 @@ const TripAdder = () =>{
       };
 
     return(
-        <Header/>,
         <React.Fragment>,
+        <Header/>,
         <TripList/>,
-        <TripForm handleOnSubmit={handleOnSubmit}/>
-        </React.Fragment>,
-        <Footer/>
+        <TripForm handleOnSubmit={handleOnSubmit}/>,
+        <Footer/>,
+        </React.Fragment>
     );
 
 }
