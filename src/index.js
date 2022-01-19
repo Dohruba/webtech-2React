@@ -6,6 +6,7 @@ import LoginPage from './components/LoginPage';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom';
 import TripEditor from './components/TripEditor';
+import TripAdder from './components/TripAdder';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,7 +14,7 @@ ReactDOM.render(
     <Routes>
     <Route path="/" element={<LoginPage/>}/>
     <Route exact path="/map" component={Map}/>
-    <Route exact path="/addTrip" component={TripAdder}>
+    <Route exact path="/addTrip" component={TripAdder}/>
     <Route exact path="/editTrip" component={TripEditor}/>
     <Route exact path="/login" component={LoginPage}/>
     </Routes>
