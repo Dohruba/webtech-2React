@@ -14,10 +14,7 @@ const TripList = ({ trips, setTrips }) => {
       {!_.isEmpty(trips) ? (
         trips.map((trip) => (
           <Trip key={trip.id} {...trip} handleRemoveTrip={handleRemoveTrip} />
-        ))
-      ) : (
-        <p className="message">Keine geplanten Reisen. </p>
-      )}
+        ))) : (<p className="message">Keine geplanten Reisen. </p>)}
     </div>
   </React.Fragment>
   )

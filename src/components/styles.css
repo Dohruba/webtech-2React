@@ -12,6 +12,14 @@ body{
   text-align: center;
 }
 
+.trip-list {
+    padding-top: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 .container{
     text-align: center;
     display: grid;

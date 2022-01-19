@@ -23,7 +23,7 @@ const TripAdder = () =>{
     return(
         <React.Fragment>,
         <Header/>,
-        <TripList />,
+        <TripList trips={trips} setTrips={setTrips}/>,
         <TripForm handleOnSubmit={handleOnSubmit}/>,
         <Footer/>,
         </React.Fragment>
