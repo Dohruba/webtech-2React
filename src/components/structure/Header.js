@@ -1,12 +1,13 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import '../styles.css';
+import image from '../../images/globe.png'
 
 const Header = () => {
     return (
         <header class="after-login">
             <div class="menu-container">
-                <img class="logo" src="images/globe.png"/>
+                <img class="logo" src={image}/>
                 <h2><a href="map.html">Deine Reisekarte ins Nirwana</a></h2>
                 <nav class="menu">
                     <ul>
