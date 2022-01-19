@@ -2,21 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import LoginPage from './components/LoginPage';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom';
+
+import LoginPage from './components/LoginPage';
 import TripEditor from './components/TripEditor';
 import TripAdder from './components/TripAdder';
+import Map from './components/Map';
+import Header from "./components/structure/Header";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+    //Header needs to be inside of Router to work, see: https://dev.to/dhintz89/header-main-footer-in-react-32pm
+    <Header/>
     <Routes>
     <Route path="/" element={<LoginPage/>}/>
-    <Route exact path="/map" component={Map}/>
-    <Route exact path="/addTrip" component={TripAdder}/>
-    <Route exact path="/editTrip" component={TripEditor}/>
-    <Route exact path="/login" component={LoginPage}/>
+    <Route exact path="/map" element={<Map/>}/>
+    <Route exact path="/addTrip" element={<TripAdder/>}/>
+    <Route exact path="/editTrip" element={<TripEditor/>}/>
+    <Route exact path="/login" element={<LoginPage/>}/>
     </Routes>
     </BrowserRouter>
   </React.StrictMode>,

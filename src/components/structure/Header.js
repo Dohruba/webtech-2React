@@ -10,10 +10,10 @@ const Header = () => {
                 <h2><a href="map.html">Deine Reisekarte ins Nirwana</a></h2>
                 <nav class="menu">
                     <ul>
-                        <li><NavLink to="/map">Karte</NavLink></li>
-                        <li><NavLink to="/addTrip">Reise hinzufügen</NavLink></li>
-                        <li><NavLink to="/editTrip">Reise bearbeiten</NavLink></li>
-                        <li><NavLink to="/login">Logout</NavLink></li>
+                        <li><NavLink to={'/map'}>Karte</NavLink></li>
+                        <li><NavLink to={'/addTrip'}>Reise hinzufügen</NavLink></li>
+                        <li><NavLink to={'/editTrip'}>Reise bearbeiten</NavLink></li>
+                        <li><NavLink to={'/login'}>Logout</NavLink></li>
                     </ul>
                 </nav>
             </div>
