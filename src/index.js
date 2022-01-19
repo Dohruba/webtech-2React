@@ -2,11 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import LoginPage from './components/LoginPage';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom';
+import TripEditor from './components/TripEditor';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+    <Routes>
+    <Route path="/" element={<LoginPage/>}/>
+    <Route exact path="/map" component={Map}/>
+    <Route exact path="/addTrip" component={TripEditor}/>
+    <Route exact path="/editTrip" component={TripEditor}/>
+    <Route exact path="/login" component={LoginPage}/>
+    </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
