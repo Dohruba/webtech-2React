@@ -21,6 +21,9 @@ ReactDOM.render(
     <Route exact path="/addTrip" element={<TripAdder/>}/>
     <Route exact path="/editTrip" element={<TripEditor/>}/>
     <Route exact path="/login" element={<LoginPage/>}/>
+   
+    <Route path="/edit/:id" element={<TripEditor/>}/>
+    
     </Routes>
     </BrowserRouter>
   </React.StrictMode>,

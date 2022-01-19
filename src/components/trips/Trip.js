@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import '../styles.css';
+import { useNavigate } from 'react-router-dom';
 
 const Trip = ({
   id,
@@ -10,6 +11,7 @@ const Trip = ({
   country,
   handleRemoveTrip
 }) => {
+  let history = useNavigate();
   return (
     <Card style={{ width: '18rem' }} className="trip">
       <Card.Body>
@@ -20,7 +22,7 @@ const Trip = ({
           <div>Enddatum: {new Date(end).toDateString()} </div>
           <div>Reiseziel: {country}</div>
         </div>
-        <Button variant="primary">Bearbeiten</Button>{' '}
+        <Button variant="primary" onClick={() => history.push(`/edit/${id}`)}>Bearbeiten</Button>{' '}
         <Button variant="danger" onClick={() => handleRemoveTrip(id)}>
           Löschen
         </Button>
