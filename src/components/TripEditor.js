@@ -1,9 +1,12 @@
 //for adding, editing and deleting trips
 
 import Api from "../services/Api";
-import React from "react";
+import Header from "./structure/Header";
 
-class TripEditor extends React.Component{
+function TripEditor(){
+    return(
+        <Header/>
+    );
 
 }
 
