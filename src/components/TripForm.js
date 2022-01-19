@@ -35,36 +35,17 @@ const TripForm = (props) => {
       };
       props.handleOnSubmit(trip);
     } else {
-      errorMsg = 'Please fill out all the fields.';
+      errorMsg = 'Bitte alle Felder ausfüllen.';
     }
     setErrorMsg(errorMsg);
   };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    switch (name) {
-      case 'country':
-        if (value === '') {
-          setTrip((prevState) => ({
-            ...prevState,
-            [name]: value
-          }));
-        }
-        break;
-      case 'end':
-        if (value === '') {
-          setTrip((prevState) => ({
-            ...prevState,
-            [name]: value
-          }));
-        }
-        break;
-      default:
-        setTrip((prevState) => ({
-          ...prevState,
-          [name]: value
-        }));
-    }
+    setTrip((prevState) => ({
+      ...prevState,
+      [name]: value
+    }));
   };
 
   return (
@@ -72,7 +53,7 @@ const TripForm = (props) => {
       {errorMsg && <p className="errorMsg">{errorMsg}</p>}
       <Form onSubmit={handleOnSubmit}>
         <Form.Group controlId="name">
-          <Form.Label>Trip Name</Form.Label>
+          <Form.Label>Reisename: </Form.Label>
           <Form.Control
             className="input-control"
             type="text"
@@ -83,10 +64,10 @@ const TripForm = (props) => {
           />
         </Form.Group>
         <Form.Group controlId="start">
-          <Form.Label>trip start</Form.Label>
+          <Form.Label>Startdatum: </Form.Label>
           <Form.Control
             className="input-control"
-            type="text"
+            type="date"
             name="start"
             value={start}
             placeholder="Startdatum eingeben"
@@ -94,10 +75,10 @@ const TripForm = (props) => {
           />
         </Form.Group>
         <Form.Group controlId="end">
-          <Form.Label>end</Form.Label>
+          <Form.Label>Enddatum: </Form.Label>
           <Form.Control
             className="input-control"
-            type="text"
+            type="date"
             name="end"
             value={end}
             placeholder="Enddatum eingeben"
@@ -105,10 +86,10 @@ const TripForm = (props) => {
           />
         </Form.Group>
         <Form.Group controlId="country">
-          <Form.Label>country</Form.Label>
+          <Form.Label>Reiseziel: </Form.Label>
           <Form.Control
             className="input-control"
-            type="number"
+            type="text"
             name="country"
             value={country}
             placeholder="Reiseland eingeben"
@@ -116,7 +97,7 @@ const TripForm = (props) => {
           />
         </Form.Group>
         <Button variant="primary" type="submit" className="submit-btn">
-          Submit
+          Hinzufügen
         </Button>
       </Form>
     </div>
