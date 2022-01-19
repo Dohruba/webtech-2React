@@ -1,5 +1,5 @@
-import "./styles.css";
-import logo from "../images/globe.png";
+import "../styles.css";
+import logo from "../../images/globe.png";
 const Header = () => {
   return (
     <header className="index-header">

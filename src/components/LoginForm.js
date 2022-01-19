@@ -11,7 +11,7 @@ const LoginForm = () => {
 
   const mailChangeHandler = (event) => {
     setEnteredMail(event.target.value);
-    console.log(event.target.value);
+    console.log(event);
   };
   const passChangeHandler = (event) => {
     setEnteredPass(event.target.value);

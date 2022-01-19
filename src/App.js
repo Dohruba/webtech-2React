@@ -1,6 +1,6 @@
 import "./components/styles.css";
 import LoginForm from "./components/LoginForm";
-import Header from "./components/Header";
+import Header from "./components/Structure/Header";
 import React from "react";
 
 function App() {
