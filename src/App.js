@@ -1,8 +1,9 @@
 import "./components/styles.css";
+import "./App.css";
 import LoginForm from "./components/LoginForm";
 import Header from "./components/Structure/Header";
 import React from "react";
-
+import MyMap from "./components/Map/MyMap";
 function App() {
   return (
     <div className="container">
@@ -13,6 +14,7 @@ function App() {
           ganz einfach über deine individuelle Reisekarte verwalten.
         </h3>
         <LoginForm />
+        <MyMap/>
       </main>
       <footer>© 2021</footer>
     </div>
