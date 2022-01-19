@@ -1,10 +1,10 @@
-//for editing and deleting trips
+//for adding trips
 
 import Api from "../services/Api";
 import Header from "./structure/Header";
 import Footer from "./structure/Footer";
 
-function TripEditor(){
+function TripAdder(){
     return(
         <Header/>,
         <Footer/>
@@ -12,4 +12,4 @@ function TripEditor(){
 
 }
 
-export default TripEditor;
+export default TripAdder;
