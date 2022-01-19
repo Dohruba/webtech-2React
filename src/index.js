@@ -13,7 +13,7 @@ ReactDOM.render(
     <Routes>
     <Route path="/" element={<LoginPage/>}/>
     <Route exact path="/map" component={Map}/>
-    <Route exact path="/addTrip" component={TripEditor}/>
+    <Route exact path="/addTrip" component={TripAdder}>
     <Route exact path="/editTrip" component={TripEditor}/>
     <Route exact path="/login" component={LoginPage}/>
     </Routes>
