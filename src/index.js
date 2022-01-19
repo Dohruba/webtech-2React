@@ -14,7 +14,6 @@ import Header from "./components/structure/Header";
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    //Header needs to be inside of Router to work, see: https://dev.to/dhintz89/header-main-footer-in-react-32pm
     <Header/>
     <Routes>
     <Route path="/" element={<LoginPage/>}/>
