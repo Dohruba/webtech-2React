@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "../styles.css";
 import { useNavigate } from 'react-router';
+import logo from '../../images/globe.png';
 
 const LoginForm = (props) => {
+
   //connect Frontend to Backend
   //const BASE_URL = "https://travelsitebackend.herokuapp.com";
 
@@ -39,8 +41,8 @@ const LoginForm = (props) => {
       })
         .then((response) => response.json())
         .then((res) => {
-          //console.log(res);
           if (res.status == 200) {
+            console.log("alles cool! ");
             setLogged(true);
             props.onTryLogin(true);
             return true;   
@@ -55,6 +57,21 @@ const LoginForm = (props) => {
   };
 
   return (
+    <div className="container">
+      <header className="index-header">
+            <div className="header-container-index">
+                <img className="logo" src={logo}/>
+                <h1 className="index-title">Deine Reisekarte ins Nirwana</h1>
+            </div>
+        </header>
+        <main>
+            <h3>
+                Jetzt einloggen 
+                und deine Reisen <br/>
+                ganz einfach
+                über deine individuelle Reisekarte 
+                verwalten.
+            </h3>
     <form className="login" >
       <label htmlFor="email">E-Mail</label>
       <input type="email" id="email" value={enteredMail} onChange={mailChangeHandler} />
@@ -68,6 +85,11 @@ const LoginForm = (props) => {
         </button>
       </div>
     </form>
+    </main>
+        <footer>
+            © 2021
+        </footer>
+    </div>
   );
 };
 export default LoginForm;

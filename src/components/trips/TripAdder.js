@@ -3,6 +3,7 @@ import React from 'react';
 import Api from '../../services/Api';
 import TripForm from './TripForm';
 import TripList from './TripList';
+import Header from '../structure/Header';
 import '../styles.css';
 
 function TripAdder({trips, setTrips}){
@@ -13,7 +14,8 @@ function TripAdder({trips, setTrips}){
       };
 
     return(
-        <React.Fragment>,
+        <React.Fragment>
+        <Header/>,
         <TripList trips={trips} setTrips={setTrips}/>,
         <TripForm isEditForm={false} handleOnSubmit={handleOnSubmit}/>,
         </React.Fragment>

@@ -4,6 +4,11 @@ import LoginForm from './LoginForm';
 import React from 'react';
 
 function LoginPage(props) {
+
+  const triedLoginPass = (result) =>{
+    props.onTryLogin(result);
+  }
+
   return (
     <div className="container">
       <header className="index-header">
@@ -20,7 +25,7 @@ function LoginPage(props) {
                 über deine individuelle Reisekarte 
                 verwalten.
             </h3>
-            <LoginForm onTryLogin={props.onTryLogin} />
+            <LoginForm onTryLogin={triedLoginPass} />
             </main>
         <footer>
             © 2021
