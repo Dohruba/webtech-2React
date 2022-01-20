@@ -23,37 +23,32 @@ const MyMap = () => {
     color: "#a9801a",
     weight: 1.5,
   };
-  const [visitedGeo, setVisitedGeo] = useState(mapData);
-  const [nonVisitedGeo, setNonVisitedGeo] = useState(mapData);
+  //const [visitedGeo, setVisitedGeo] = useState(mapData);
+  //const [nonVisitedGeo, setNonVisitedGeo] = useState(mapData);
 
   const visitedCountries = (country, layer) => {
     //console.log(country);
   };
-  React.useEffect(() =>{
-      document.querySelector('.loginBtn').addEventListener('click', () =>{
-        
-        if(true){
-          trips = ["Germany", "Italy"]
-        }else {
-          trips = [];
-        }
-        filteredData = {
-          ...mapData,
-          features: mapData.features.filter((feature) =>
-            trips.includes(feature.properties.name)
-          ),
-        };
-        setVisitedGeo(filteredData);
-        filteredNotVisited = {
-          ...mapData,
-          features: mapData.features.filter(
-            (feature) => !trips.includes(feature.properties.name)
-          ),
-        };
-        setNonVisitedGeo(filteredNotVisited)
-
-      })
-  }, []);
+  
+  if(true){
+    trips = ["Germany", "Italy"]
+  }else {
+    trips = [];
+  }
+  filteredData = {
+    ...mapData,
+    features: mapData.features.filter((feature) =>
+      trips.includes(feature.properties.name)
+    ),
+  };
+  //setVisitedGeo(filteredData);
+  filteredNotVisited = {
+    ...mapData,
+    features: mapData.features.filter(
+      (feature) => !trips.includes(feature.properties.name)
+    ),
+  };
+  //setNonVisitedGeo(filteredNotVisited);
 
 
   return (
@@ -69,12 +64,12 @@ const MyMap = () => {
       />
       <GeoJSON
         style={visitedCountryStyle}
-        data={visitedGeo.features}
+        data={filteredData.features}
         onEachFeature={visitedCountries}
       ></GeoJSON>
       <GeoJSON
         style={countryStyle}
-        data={nonVisitedGeo.features}
+        data={filteredNotVisited.features}
       ></GeoJSON>
     </MapContainer>
   );
