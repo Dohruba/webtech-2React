@@ -20,7 +20,6 @@ const App = () => {
   const loginTriedHandler = (result) => {
     setLoggedIn(result);
     console.log("Login: " + result);
-    
   };
 
   return (
