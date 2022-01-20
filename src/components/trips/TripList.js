@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import _ from 'lodash';
 import Trip from './Trip';
+import Header from '../structure/Header';
 import '../styles.css';
 
 const BASE_URL = "http://localhost:5000";
@@ -39,6 +40,7 @@ const TripList = () => {
   } else {
   return (
     <React.Fragment>
+      <Header/>
     <div className="trip-list">
       {!_.isEmpty(trips) ? (
         trips.map((trip) => (

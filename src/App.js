@@ -15,7 +15,6 @@ import LoadTrips from './services/LoadTrips';
 import useLocalStorage from './hooks/useLocalStorage';
 
 const App = () => {
-
   const [trips, setTrips] = useLocalStorage('trips', [])
   const [loggedIn, setLoggedIn] = useState();
   const loginTriedHandler = (result) => {
@@ -23,21 +22,6 @@ const App = () => {
     console.log("Login: " + result);
     
   };
-
-  // let mainContent = <p>Not logged in yet</p>;
-  // if (loggedIn) {
-  //   mainContent = <MyMap loginState={loggedIn} />;
-  // } else {
-  //   mainContent = (
-  //     <div>
-  //       <h3>
-  //         Jetzt einloggen und deine Reisen <br />
-  //         ganz einfach über deine individuelle Reisekarte verwalten.
-  //       </h3>
-  //       <LoginForm onTryLogin={loginTriedHandler} logged={loggedIn} />
-  //     </div>
-  //   );
-  // }
 
   return (
     <BrowserRouter>
@@ -51,7 +35,7 @@ const App = () => {
       trips={trips} setTrips={setTrips}/>}/> 
       <Route exact path="/loadTrips" element={<LoadTrips/>}/>
       </Routes>
-    <Footer/>
+      <Footer/>
     </BrowserRouter>
   );
 }

@@ -14,7 +14,7 @@ const Header = () => {
                         <li><NavLink to={'/map'}>Karte</NavLink></li>
                         <li><NavLink to={'/addTrip'}>Reise hinzufügen</NavLink></li>
                         <li><NavLink to={'/editTrip'}>Reise bearbeiten</NavLink></li>
-                        <li><NavLink to={'/login'}>Logout</NavLink></li>
+                        <li><NavLink to={'/'}>Logout</NavLink></li>
                     </ul>
                 </nav>
             </div>
