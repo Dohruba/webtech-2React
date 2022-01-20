@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import logo from '../../images/globe.png';
 
 const LoginForm = (props) => {
-
+  let navigate = useNavigate();
   //connect Frontend to Backend
   //const BASE_URL = "https://travelsitebackend.herokuapp.com";
 
@@ -45,6 +45,7 @@ const LoginForm = (props) => {
             console.log("alles cool! ");
             setLogged(true);
             props.onTryLogin(true);
+            navigate('/map');
             return true;   
           } else {
             setLogged(false);
