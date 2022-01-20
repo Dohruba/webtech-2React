@@ -4,24 +4,19 @@ import Api from '../../services/Api';
 import TripForm from './TripForm';
 import TripList from './TripList';
 import '../styles.css';
+import { useState } from "react";
 
-//for testing
-import useLocalStorage from '../../hooks/useLocalStorage';
-
-const TripAdder = ({history}) =>{
-    
-    const [trips, setTrips] = useLocalStorage('trips', []);
+function TripAdder({trips, setTrips}){
 
     const handleOnSubmit = (trip) => {
         //console.log(trip);
         setTrips([...trips, trip]);
-        history.push('/');
       };
 
     return(
         <React.Fragment>,
         <TripList trips={trips} setTrips={setTrips}/>,
-        <TripForm handleOnSubmit={handleOnSubmit}/>,
+        <TripForm isEditForm={false} handleOnSubmit={handleOnSubmit}/>,
         </React.Fragment>
     );
 

@@ -5,12 +5,15 @@ import '../styles.css';
 
 const TripForm = (props) => {
 
-  const [trip, setTrip] = useState({
+  var isEditForm = props.isEditForm;
+
+  const [trip, setTrip] = useState(() =>{
+    return{
     tripname: props.trip ? props.trip.tripname : '',
     start: props.trip ? props.trip.start : '',
     end: props.trip ? props.trip.end : '',
     country: props.trip ? props.trip.country : '',
-  });
+  }});
 
   const [errorMsg, setErrorMsg] = useState('');
   const { tripname, start, end, country } = trip;
@@ -96,9 +99,13 @@ const TripForm = (props) => {
             onChange={handleInputChange}
           />
         </Form.Group>
-        <Button variant="primary" type="submit" className="submit-btn">
-          Hinzufügen
-        </Button>
+        {isEditForm 
+        ? <Button variant="primary" type="submit" className="submit-btn">
+        Änderungen speichern </Button>
+        : <Button variant="primary" type="submit" className="submit-btn">
+        Hinzufügen
+        </Button>}
+        
       </Form>
     </div>
   );

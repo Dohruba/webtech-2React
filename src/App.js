@@ -1,6 +1,6 @@
 import './components/styles.css';
 import React from 'react';
-import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 import LoginPage from './components/login/LoginPage';
 import TripEditor from './components/trips/TripEditor';
@@ -23,13 +23,13 @@ const App = () => {
       <Routes>
       <Route path="/" element={<LoginPage/>}/>
       <Route exact path="/map" element={<Map/>}/>
-      <Route exact path="/addTrip" element={<TripAdder/>}/>
-      
-      <Route path="/editTrip/:id" element={<TripEditor
+      <Route exact path="/addTrip" element={<TripAdder
+      trips={trips} setTrips={setTrips}/>}/>
+      <Route exact path="/editTrip" element={<TripList
       trips={trips} setTrips={setTrips}/>}/> 
-      
+      <Route exact path="/editTrip/:id" element={<TripEditor
+      trips={trips} setTrips={setTrips}/>}/> 
       <Route exact path="/login" element={<LoginPage/>}/>
-      
       </Routes>
     <Footer/>
     </BrowserRouter>

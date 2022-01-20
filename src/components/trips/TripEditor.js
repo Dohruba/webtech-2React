@@ -1,20 +1,23 @@
-//for editing and deleting trips
+//for editing trips
 
 import Api from "../../services/Api";
 import '../styles.css';
-import React, { useState } from "react";
 import TripForm from "./TripForm";
+import TripList from "./TripList";
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router';
+import React from 'react';
 
-function TripEditor({navigate, trips, setTrips}){
+function TripEditor({trips, setTrips}){
 
+    let navigate = useNavigate();
     const {id} = useParams();
     const tripToEdit = trips.find((trip) => trip.id === id);
 
     const handleOnSubmit = (trip) => {
       const filteredTrips = trips.filter((trip) => trip.id !== id);
       setTrips([trip, ...filteredTrips]);
-      navigate('/');
+      navigate('/editTrip');
     }
 
     //connect Frontend to Backend
@@ -25,12 +28,11 @@ function TripEditor({navigate, trips, setTrips}){
     // var arrayLength = 0;
 
     return(
-      <div>
-        <TripForm trip={tripToEdit} handleOnSubmit={handleOnSubmit}/>,
-      </div>
+      <React.Fragment>,
+        <TripList trips={trips} setTrips={setTrips}/>,
+        <TripForm isEditForm={true} trip={tripToEdit} handleOnSubmit={handleOnSubmit}/>,
+      </React.Fragment>
     );
-
-
 
     /*
     //Ricardos Part to activate later
