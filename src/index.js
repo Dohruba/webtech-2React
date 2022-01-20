@@ -3,29 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom';
-
-import LoginPage from './components/login/LoginPage';
-import TripEditor from './components/trips/TripEditor';
-import TripAdder from './components/trips/TripAdder';
-import Map from './components/map/Map';
-import Header from "./components/structure/Header";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-    <Header/>
-    <Routes>
-    <Route path="/" element={<LoginPage/>}/>
-    <Route exact path="/map" element={<Map/>}/>
-    <Route exact path="/addTrip" element={<TripAdder/>}/>
-    <Route exact path="/editTrip" element={<TripEditor/>}/>
-    <Route exact path="/login" element={<LoginPage/>}/>
-   
-    <Route path="/edit/:id" element={<TripEditor/>}/>
-    
-    </Routes>
-    </BrowserRouter>
+  <React.StrictMode>,
+    <App/>,
   </React.StrictMode>,
   document.getElementById('root')
 );

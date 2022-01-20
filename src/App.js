@@ -1,31 +1,38 @@
 import './components/styles.css';
-import logo from './images/globe.png';
-import LoginForm from './components/login/LoginForm';
 import React from 'react';
+import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom';
 
-function App() {
+import LoginPage from './components/login/LoginPage';
+import TripEditor from './components/trips/TripEditor';
+import TripAdder from './components/trips/TripAdder';
+import TripList from './components/trips/TripList';
+import Map from './components/map/Map';
+import Header from "./components/structure/Header";
+import Footer from "./components/structure/Footer";
+
+//for testing
+import useLocalStorage from './hooks/useLocalStorage';
+
+const App = () => {
+
+  const [trips, setTrips] = useLocalStorage('trips', []);
+
   return (
-    <div className="container">
-      <header className="index-header">
-            <div className="header-container-index">
-                <img className="logo" src={logo}/>
-                <h1 className="index-title">Deine Reisekarte ins Nirwana</h1>
-            </div>
-        </header>
-        <main>
-            <h3>
-                Jetzt einloggen 
-                und deine Reisen <br/>
-                ganz einfach
-                über deine individuelle Reisekarte 
-                verwalten.
-            </h3>
-            <LoginForm/>
-            </main>
-        <footer>
-            © 2021
-        </footer>
-    </div>
+    <BrowserRouter>
+    <Header/>
+      <Routes>
+      <Route path="/" element={<LoginPage/>}/>
+      <Route exact path="/map" element={<Map/>}/>
+      <Route exact path="/addTrip" element={<TripAdder/>}/>
+      
+      <Route path="/editTrip/:id" element={<TripEditor
+      trips={trips} setTrips={setTrips}/>}/> 
+      
+      <Route exact path="/login" element={<LoginPage/>}/>
+      
+      </Routes>
+    <Footer/>
+    </BrowserRouter>
   );
 }
 

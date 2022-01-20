@@ -1,14 +1,12 @@
 //for editing and deleting trips
 
 import Api from "../../services/Api";
-import Header from "../structure/Header";
-import Footer from "../structure/Footer";
 import '../styles.css';
 import React, { useState } from "react";
 import TripForm from "./TripForm";
 import { useParams } from 'react-router-dom';
 
-function TripEditor({history, trips, setTrips}){
+function TripEditor({navigate, trips, setTrips}){
 
     const {id} = useParams();
     const tripToEdit = trips.find((trip) => trip.id === id);
@@ -16,7 +14,7 @@ function TripEditor({history, trips, setTrips}){
     const handleOnSubmit = (trip) => {
       const filteredTrips = trips.filter((trip) => trip.id !== id);
       setTrips([trip, ...filteredTrips]);
-      history.push('/');
+      navigate('/');
     }
 
     //connect Frontend to Backend
@@ -27,29 +25,9 @@ function TripEditor({history, trips, setTrips}){
     // var arrayLength = 0;
 
     return(
-        <Header/>,
+      <div>
         <TripForm trip={tripToEdit} handleOnSubmit={handleOnSubmit}/>,
-        
-        {/*
-          <div>
-          <h2>Meine Reisen: </h2>
-            <div id="btnWrapper">
-            <table class="triptable">
-                <thead>
-                <tr>
-                  <th>Reisename</th>
-                  <th>Anfang</th>
-                  <th>Ende</th>
-                  <th>Reiseland</th>
-                </tr>
-                </thead>
-            <tbody>
-            </tbody>
-            </table>
-            </div> 
-          </div>*/}
-        ,
-        <Footer/>
+      </div>
     );
 
 
