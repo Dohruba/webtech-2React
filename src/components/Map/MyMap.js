@@ -5,6 +5,9 @@ import mapData from "../../data/mapData.json";
 import "./MyMap.css";
 
 const MyMap = () => {
+  let trips = [];
+  let filteredData = [];
+  let filteredNotVisited = [];
   //const BASE_URL = "https://travelsitebackend.herokuapp.com";
   const BASE_URL = "http://localhost:5000";
   let state = {};
@@ -20,26 +23,38 @@ const MyMap = () => {
     color: "#a9801a",
     weight: 1.5,
   };
-  const [visitedGeo, setVisitedGeo] = useState("");
-  const [nonVisitedGeo, setNonVisitedGeo] = useState("");
-
-  let trips = ["Germany", "Italy"];
-  const filteredData = {
-    ...mapData,
-    features: mapData.features.filter((feature) =>
-      trips.includes(feature.properties.name)
-    ),
-  };
-  const filteredNotVisited = {
-    ...mapData,
-    features: mapData.features.filter(
-      (feature) => !trips.includes(feature.properties.name)
-    ),
-  };
+  const [visitedGeo, setVisitedGeo] = useState(mapData);
+  const [nonVisitedGeo, setNonVisitedGeo] = useState(mapData);
 
   const visitedCountries = (country, layer) => {
-    console.log(country);
+    //console.log(country);
   };
+  React.useEffect(() =>{
+      document.querySelector('.loginBtn').addEventListener('click', () =>{
+        
+        if(true){
+          trips = ["Germany", "Italy"]
+        }else {
+          trips = [];
+        }
+        filteredData = {
+          ...mapData,
+          features: mapData.features.filter((feature) =>
+            trips.includes(feature.properties.name)
+          ),
+        };
+        setVisitedGeo(filteredData);
+        filteredNotVisited = {
+          ...mapData,
+          features: mapData.features.filter(
+            (feature) => !trips.includes(feature.properties.name)
+          ),
+        };
+        setNonVisitedGeo(filteredNotVisited)
+
+      })
+  }, []);
+
 
   return (
     <MapContainer
@@ -54,12 +69,12 @@ const MyMap = () => {
       />
       <GeoJSON
         style={visitedCountryStyle}
-        data={filteredData.features}
+        data={visitedGeo.features}
         onEachFeature={visitedCountries}
       ></GeoJSON>
       <GeoJSON
         style={countryStyle}
-        data={filteredNotVisited.features}
+        data={nonVisitedGeo.features}
       ></GeoJSON>
     </MapContainer>
   );
