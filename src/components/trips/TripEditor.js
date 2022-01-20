@@ -7,6 +7,7 @@ import TripList from "./TripList";
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import React from 'react';
+import Header from "../structure/Header";
 
 function TripEditor({trips, setTrips}){
 
@@ -28,10 +29,15 @@ function TripEditor({trips, setTrips}){
     // var arrayLength = 0;
 
     return(
-      <React.Fragment>,
-        <TripList trips={trips} setTrips={setTrips}/>,
-        <TripForm isEditForm={true} trip={tripToEdit} handleOnSubmit={handleOnSubmit}/>,
-      </React.Fragment>
+      <div>
+        <Header/>
+        <main>
+          <React.Fragment>
+          <TripList trips={trips} setTrips={setTrips}/>
+          <TripForm isEditForm={true} trip={tripToEdit} handleOnSubmit={handleOnSubmit}/>
+        </React.Fragment>
+        </main>
+      </div>
     );
 
     /*

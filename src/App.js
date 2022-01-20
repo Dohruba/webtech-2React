@@ -21,6 +21,7 @@ const App = () => {
   const loginTriedHandler = (result) => {
     setLoggedIn(result);
     console.log("Login: " + result);
+    
   };
 
   // let mainContent = <p>Not logged in yet</p>;

@@ -1,6 +1,5 @@
 //for adding trips
 import React from 'react';
-import Api from '../../services/Api';
 import TripForm from './TripForm';
 import TripList from './TripList';
 import Header from '../structure/Header';
@@ -15,9 +14,9 @@ function TripAdder({trips, setTrips}){
 
     return(
         <React.Fragment>
-        <Header/>,
-        <TripList trips={trips} setTrips={setTrips}/>,
-        <TripForm isEditForm={false} handleOnSubmit={handleOnSubmit}/>,
+        <Header/>
+        <TripList trips={trips} setTrips={setTrips}/>
+        <TripForm isEditForm={false} handleOnSubmit={handleOnSubmit}/>
         </React.Fragment>
     );
 

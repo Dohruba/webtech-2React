@@ -56,7 +56,10 @@ const MyMap = () => {
 
 
   return (
-    <MapContainer
+    <div>
+      <Header/>
+      <main style={{"paddingTop": "150px"}}>
+      <MapContainer
       style={{ height: "45vh", width: "100vh" }}
       zoom={2}
       center={[20, 100]}
@@ -76,6 +79,8 @@ const MyMap = () => {
         data={filteredNotVisited.features}
       ></GeoJSON>
     </MapContainer>
+      </main>
+    </div>
   );
 };
 export default MyMap;

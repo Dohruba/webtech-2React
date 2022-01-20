@@ -5,6 +5,7 @@ import logo from '../../images/globe.png';
 
 const LoginForm = (props) => {
 
+  let navigate = useNavigate();
   //connect Frontend to Backend
   //const BASE_URL = "https://travelsitebackend.herokuapp.com";
 
@@ -41,10 +42,11 @@ const LoginForm = (props) => {
       })
         .then((response) => response.json())
         .then((res) => {
-          if (res.status == 200) {
+          if (res.status === "200") {
             console.log("alles cool! ");
             setLogged(true);
             props.onTryLogin(true);
+            navigate('/map');
             return true;   
           } else {
             setLogged(false);
