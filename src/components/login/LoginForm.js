@@ -42,7 +42,6 @@ const LoginForm = (props) => {
         .then((response) => response.json())
         .then((res) => {
           if (res.status === "200") {
-            console.log("alles cool! ");
             setLogged(true);
             props.onTryLogin(true);
             navigate('/map');
@@ -73,7 +72,7 @@ const LoginForm = (props) => {
                 über deine individuelle Reisekarte 
                 verwalten.
             </h3>
-    <form className="login" >
+    <div className="login" >
       <label htmlFor="email">E-Mail</label>
       <input type="email" id="email" value={enteredMail} onChange={mailChangeHandler} />
       <br />
@@ -85,7 +84,7 @@ const LoginForm = (props) => {
           Jetzt einloggen
         </button>
       </div>
-    </form>
+    </div>
     </main>
         <footer>
             © 2021
