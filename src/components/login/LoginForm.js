@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-import {test} from "../map/Map";
 import "../styles.css";
 import { useNavigate } from 'react-router';
 
 let loggedIn = false;
 const LoginForm = (props) => {
-
-  let navigate = useNavigate();
-
   //connect Frontend to Backend
   //const BASE_URL = "https://travelsitebackend.herokuapp.com";
 
@@ -48,7 +44,6 @@ const LoginForm = (props) => {
           if (res.status == 200) {
             setLogged(true);
             props.onTryLogin(true);
-            navigate("/map");
             return true;   
           } else {
             setLogged(false);

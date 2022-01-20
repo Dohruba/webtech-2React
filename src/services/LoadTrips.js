@@ -30,17 +30,16 @@ function LoadTrips() {
       return <div>Warten bis Daten geladen sind...</div>;
     } else {
       return (
-          
-        // <ul className="test">
-        //  {items.map(item => (
-        //     <li>
-        //       <li>{item.name} </li>
-        //       <li>{item.start} </li>
-        //       <li>{item.end} </li>
-        //       <li>{item.country} </li>
-        //     </li>
-        //   ))} 
-        // </ul>
+        <ul className="test">
+         {items.map(item => (
+            <li>
+              <li>{item.name} </li>
+              <li>{item.start} </li>
+              <li>{item.end} </li>
+              <li>{item.country} </li>
+            </li>
+          ))} 
+        </ul>
       );
     }
   }

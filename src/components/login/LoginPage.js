@@ -20,7 +20,7 @@ function LoginPage() {
                 über deine individuelle Reisekarte 
                 verwalten.
             </h3>
-            <LoginForm/>
+            <LoginForm />
             </main>
         <footer>
             © 2021
