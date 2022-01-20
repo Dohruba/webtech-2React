@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import {test} from "./Map/MyMap";
 import "./styles.css";
 
 let loggedIn = false;
