@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../styles.css";
 import { useNavigate } from 'react-router';
 
-let loggedIn = false;
 const LoginForm = (props) => {
   //connect Frontend to Backend
   //const BASE_URL = "https://travelsitebackend.herokuapp.com";

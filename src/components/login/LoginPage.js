@@ -3,7 +3,7 @@ import logo from '../../images/globe.png';
 import LoginForm from './LoginForm';
 import React from 'react';
 
-function LoginPage() {
+function LoginPage(props) {
   return (
     <div className="container">
       <header className="index-header">
@@ -20,7 +20,7 @@ function LoginPage() {
                 über deine individuelle Reisekarte 
                 verwalten.
             </h3>
-            <LoginForm />
+            <LoginForm onTryLogin={props.onTryLogin} />
             </main>
         <footer>
             © 2021

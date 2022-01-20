@@ -41,7 +41,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-      <Route exact path="/" element={<LoginPage/>}/>
+      <Route exact path="/" element={<LoginPage onTryLogin={loginTriedHandler}/>}/>
       {loggedIn ? 
       <div>
       <Header/> 
