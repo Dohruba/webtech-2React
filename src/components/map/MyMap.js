@@ -56,6 +56,9 @@ const MyMap = () => {
 
 
   return (
+    <React.Fragment>
+    <Header/>
+    <div className="leaflet-container">
     <MapContainer
       style={{ height: "45vh", width: "100vh" }}
       zoom={2}
@@ -76,6 +79,8 @@ const MyMap = () => {
         data={filteredNotVisited.features}
       ></GeoJSON>
     </MapContainer>
+    </div>
+    </React.Fragment>
   );
 };
 export default MyMap;

@@ -15,9 +15,9 @@ function TripAdder({trips, setTrips}){
 
     return(
         <React.Fragment>
-        <Header/>,
-        <TripList trips={trips} setTrips={setTrips}/>,
-        <TripForm isEditForm={false} handleOnSubmit={handleOnSubmit}/>,
+        <Header/>
+        <TripList trips={trips} setTrips={setTrips}/>
+        <TripForm isEditForm={false} handleOnSubmit={handleOnSubmit}/>
         </React.Fragment>
     );
 
