@@ -4,7 +4,6 @@ import Api from '../../services/Api';
 import TripForm from './TripForm';
 import TripList from './TripList';
 import '../styles.css';
-import { useState } from "react";
 
 function TripAdder({trips, setTrips}){
 

@@ -4,8 +4,8 @@ import '../styles.css';
 import { useNavigate } from 'react-router';
 
 const Trip = ({
-  id,
-  tripname,
+  trip_id,
+  name,
   start,
   end,
   country,
@@ -15,17 +15,17 @@ const Trip = ({
   return (
     <Card style={{ width: '18rem' }} className="trip">
       <Card.Body>
-        <Card.Title className="trip-title">{tripname}</Card.Title>
+        <Card.Title className="trip-title">{name}</Card.Title>
         <div className="trip-details">
-          <div>Reisename: {tripname}</div>
+          <div>Reisename: {name}</div>
           <div>Startdatum: {new Date(start).toDateString()} </div>
           <div>Enddatum: {new Date(end).toDateString()} </div>
           <div>Reiseziel: {country}</div>
         </div>
-        <Button variant="primary" onClick={() => navigate(`/editTrip/${id}`)}>
+        <Button variant="primary" onClick={() => navigate(`/editTrip/${trip_id}`)}>
           Bearbeiten
           </Button>{' '}
-        <Button variant="danger" onClick={() => handleRemoveTrip(id)}>
+        <Button variant="danger" onClick={() => handleRemoveTrip(trip_id)}>
           Löschen
         </Button>
       </Card.Body>

@@ -11,6 +11,7 @@ import Header from "./components/structure/Header";
 import Footer from "./components/structure/Footer";
 
 //for testing
+import LoadTrips from './services/LoadTrips';
 import useLocalStorage from './hooks/useLocalStorage';
 
 const App = () => {
@@ -19,17 +20,17 @@ const App = () => {
 
   return (
     <BrowserRouter>
-    <Header/>
+      <Header/>
       <Routes>
-      <Route path="/" element={<LoginPage/>}/>
+      <Route exact path="/" element={<LoginPage/>}/>
       <Route exact path="/map" element={<Map/>}/>
       <Route exact path="/addTrip" element={<TripAdder
       trips={trips} setTrips={setTrips}/>}/>
-      <Route exact path="/editTrip" element={<TripList
-      trips={trips} setTrips={setTrips}/>}/> 
+      <Route exact path="/editTrip" element={<TripList/>}/> 
       <Route exact path="/editTrip/:id" element={<TripEditor
       trips={trips} setTrips={setTrips}/>}/> 
       <Route exact path="/login" element={<LoginPage/>}/>
+      <Route exact path="/loadTrips" element={<LoadTrips/>}/>
       </Routes>
     <Footer/>
     </BrowserRouter>

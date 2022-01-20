@@ -3,6 +3,10 @@ body{
     
 }
 
+.test{
+    padding-top: 250px;
+}
+
 .main-form {
   color: #222222;
   font-size: 18px;

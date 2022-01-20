@@ -1,21 +1,28 @@
 import React, { useState } from "react";
-import '../styles.css';
+import {test} from "../map/Map";
+import "../styles.css";
+import { useNavigate } from 'react-router';
 
-const LoginForm = () => {
+let loggedIn = false;
+const LoginForm = (props) => {
+
+  let navigate = useNavigate();
+
   //connect Frontend to Backend
   //const BASE_URL = "https://travelsitebackend.herokuapp.com";
 
   const BASE_URL = "http://localhost:5000";
   const [enteredMail, setEnteredMail] = useState("");
   const [enteredPass, setEnteredPass] = useState("");
+  const [logged, setLogged] = useState(false);
 
   const mailChangeHandler = (event) => {
     setEnteredMail(event.target.value);
-    console.log(event);
+    //console.log(event);
   };
   const passChangeHandler = (event) => {
     setEnteredPass(event.target.value);
-    console.log(event.target.value);
+    //console.log(event.target.value);
   };
 
   const clickHandler = () => {
@@ -25,8 +32,7 @@ const LoginForm = () => {
       email: mail,
       password: password,
     };
-
-  const tryLogin = async () => {
+    const tryLogin = async () => {
       const response = await fetch(`${BASE_URL}/login`, {
         method: "POST",
         mode: "cors",
@@ -38,28 +44,31 @@ const LoginForm = () => {
       })
         .then((response) => response.json())
         .then((res) => {
-          return res;
+          //console.log(res);
+          if (res.status == 200) {
+            setLogged(true);
+            props.onTryLogin(true);
+            navigate("/map");
+            return true;   
+          } else {
+            setLogged(false);
+            props.onTryLogin(false);
+            return false;
+          }
         });
-      // console.log(response);
-      if (response.status == 200) {
-        //window.location.replace("map.html");
-        alert("Password Correct");
-      } else {
-        alert("Fehler beim Login: " + response.status);
-      }
     };
     tryLogin();
   };
 
   return (
-    <form className="login">
+    <form className="login" >
       <label htmlFor="email">E-Mail</label>
-      <input type="email" id="email" onChange={mailChangeHandler} />
+      <input type="email" id="email" value={enteredMail} onChange={mailChangeHandler} />
       <br />
       <label htmlFor="password">Passwort</label>
       <input type="password" id="pw" onChange={passChangeHandler} />
       <div>
-        <button type="submit" className="loginBtn" onClick={clickHandler}>
+        <button type="submit" className="loginBtn" value={enteredPass} onClick={clickHandler}>
           {" "}
           Jetzt einloggen
         </button>
