@@ -4,9 +4,10 @@ import Trip from './Trip';
 import '../styles.css';
 
 const TripList = ({ trips, setTrips }) => {
-    const handleRemoveTrip = (id) => {
-        setTrips(trips.filter((trip) => trip.id !== id));
-      };
+  
+  const handleRemoveTrip = (id) => {
+      setTrips(trips.filter((trip) => trip.id !== id));
+    };
 
   return (
     <React.Fragment>
