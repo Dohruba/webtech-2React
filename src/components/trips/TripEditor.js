@@ -8,7 +8,6 @@ import Header from '../structure/Header';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import React from 'react';
-import Header from "../structure/Header";
 
 function TripEditor({trips, setTrips}){
 
