@@ -34,7 +34,7 @@ const TripList = (props) => {
       getTrips();
       console.log("useEff-triplisT")
       return() => mounted = false; //cleanup function
-  }, [])
+  }, [props.rerender])
   
   const handleRemoveTrip = (id) => {
       // setTrips(trips.filter((trip) => trip.trip_id !== id));
