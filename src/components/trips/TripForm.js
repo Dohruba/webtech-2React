@@ -22,7 +22,7 @@ const TripForm = (props) => {
     end: props.trip ? props.trip.end : '',
     country: props.trip ? props.trip.country : '',
     }
-    console.log(props);
+    // console.log(props);
     setTrip(tripToEdit);
   }
 
@@ -81,10 +81,7 @@ const TripForm = (props) => {
     }));
   };
 
-  // const [selected, setSelected] = useState('');
-  // const countrySelectedHandler = (country) =>{
-  //   setSelected(country);
-  // }
+
   if(trip.country.length == 0){
     trip.country = "Bitte Land wählen";
   }
@@ -126,11 +123,8 @@ const TripForm = (props) => {
           />
         </Form.Group>
         <Form.Group controlId="country">
-          <Form.Label>Reiseziel: </Form.Label>
-
           <DropdownCountries selected={trip.country} name="country"
           onSelect={handleInputChange}/>
-
         </Form.Group>
         {isEditForm 
         ? <Button variant="primary" type="submit" className="submit-btn">

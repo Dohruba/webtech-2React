@@ -19,7 +19,7 @@ const DropdownCountries = (props) =>{
     return(
         <div className='dropdown-countries'>
         <div className='dropdown-countries__control'>
-          <label>Reiseziel:</label>
+          <label>Reiseziel: </label>
           <select name="country" value={props.selected} onChange={changeCountryHandler}>
             {dropdownContent}
           </select>
