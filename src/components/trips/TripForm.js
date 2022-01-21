@@ -22,6 +22,7 @@ const TripForm = (props) => {
     end: props.trip ? props.trip.end : '',
     country: props.trip ? props.trip.country : '',
     }
+    console.log(props);
     setTrip(tripToEdit);
   }
 
@@ -30,7 +31,7 @@ const TripForm = (props) => {
     if(mounted){
     updateTrip();}
     return() => mounted = false;
-  },[]);
+  },[props]);
 
   const [errorMsg, setErrorMsg] = useState('');
   const { name, start, end, country } = trip;
@@ -55,7 +56,7 @@ const TripForm = (props) => {
         country
       };
       props.handleOnSubmit(trip);
-      
+
       setTrip({
         name: '',
         start: '',
