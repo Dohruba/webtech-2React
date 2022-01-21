@@ -31,6 +31,13 @@ class Api {
     }).then((response) => response.json());
   }
 
+  // var tableData = {
+  //   name: name,
+  //   start: start,
+  //   end: end,
+  //   country: country,
+  // };
+
   static async addTrip(data) {
     const response = await fetch(`${BASE_URL}/trips`, {
       method: "POST",
