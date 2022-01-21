@@ -29,6 +29,7 @@ const LoginForm = (props) => {
       email: mail,
       password: password,
     };
+    console.log(tableData);
     const tryLogin = async () => {
       const response = await fetch(`${BASE_URL}/login`, {
         method: "POST",

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button} from 'react-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
 import '../styles.css';
 import Moment from 'moment';
+import DropdownCountries from './DropdownCountries';
 
 const TripForm = (props) => {
 
   var isEditForm = props.isEditForm;
+
 
   if(props.trip != null){
     console.log("props.trip: "+props.trip.name)
@@ -59,6 +61,13 @@ const TripForm = (props) => {
     }));
   };
 
+
+  const [selected, setSelected] = useState("Germany");
+  const countrySelectedHandler = (country) =>{
+    setSelected(country);
+    console.log(country);
+  }
+
   return (
     <div className="main-form">
       {errorMsg && <p className="errorMsg">{errorMsg}</p>}
@@ -98,6 +107,7 @@ const TripForm = (props) => {
         </Form.Group>
         <Form.Group controlId="country">
           <Form.Label>Reiseziel: </Form.Label>
+          <DropdownCountries selected={selected} onCountrySelect={countrySelectedHandler} onChange={handleInputChange}/>
           <Form.Control
             className="input-control"
             type="text"
