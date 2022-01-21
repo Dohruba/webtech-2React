@@ -13,21 +13,27 @@ const TripList = (props) => {
   const [trips, setTrips] = useState([]);
 
   useEffect(() => {
+    let mounted = true;
+    async function getTrips(){
     fetch(`${BASE_URL}/trips`, {
       method: "GET",
       credentials: "include",
     }).then(res => res.json())
       .then(
         (result) => {
+          if(mounted){
           setIsLoaded(true);
-          setTrips(result);
-          // props.handleOnSubmit(trip);
+          setTrips(result);}
         },
         (error) => {
+          if(mounted){
           setIsLoaded(true);
-          setError(error);
+          setError(error);}
         }
-      )
+      )}
+      getTrips();
+      console.log("useEff-triplisT")
+      return() => mounted = false; //cleanup function
   }, [])
   
   const handleRemoveTrip = (id) => {
@@ -40,7 +46,7 @@ const TripList = (props) => {
     };
     fetch(`${BASE_URL}/trips/`+id, requestOptions)
         .then(res => console.log(res));   
-    };
+  };
 
   if (error) {
     return <div>Error: {error.message}</div>;

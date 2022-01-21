@@ -19,28 +19,33 @@ function TripEditor(){
     const [isLoaded, setIsLoaded] = useState(false);
     const [trips, setTrips] = useState([]);
     
+    let navigate = useNavigate();
+    const {id} = useParams(); //gets id from current route
+    
+    const tripToEdit = trips.find((trip) => trip.trip_id === id);
+
     useEffect(() => {
+      let mounted = true;
+      async function getTrips(){
       fetch(`${BASE_URL}/trips`, {
         method: "GET",
         credentials: "include",
       }).then(res => res.json())
         .then(
           (result) => {
+            if(mounted){
             setIsLoaded(true);
-            setTrips(result);
+            setTrips(result);}
           },
           (error) => {
+            if(mounted){
             setIsLoaded(true);
-            setError(error);
+            setError(error);}
           }
-        )
-    }, [])
-
-    let navigate = useNavigate();
-
-    const {id} = useParams(); //gets id from current route
-
-    const tripToEdit = trips.find((trip) => trip.trip_id === id);
+        )};
+        getTrips();
+        return() => mounted = false; //cleanup function
+    }, [id])
 
     const handleOnSubmit = (trip) => {
         const data = { 
@@ -48,7 +53,7 @@ function TripEditor(){
             start: trip.start,
             end: trip.end,
             country: trip.country }
-
+      
         const requestOptions = {
             method: "PATCH",
             mode: "cors",
@@ -59,13 +64,10 @@ function TripEditor(){
 
         fetch(`${BASE_URL}/trips/` +id, requestOptions)
             .then(response => response.json())
-            .then(res => res.status == "200");
-
+            .then(res => res.status == "200")
       // navigate('/editTrip');
     }
     
-    // let dataArray = [];
-    // var arrayLength = 0;
 
     return(
       <div>
@@ -73,7 +75,7 @@ function TripEditor(){
         <main>
         <React.Fragment>
           <div className="test">
-          <TripForm isEditForm={true} trip={tripToEdit} handleOnSubmit={handleOnSubmit}/>
+          <TripForm isEditForm={true} trip={tripToEdit} handleOnSubmit={handleOnSubmit}/>
           </div>
         </React.Fragment>
         </main>

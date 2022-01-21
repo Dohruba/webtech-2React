@@ -17,7 +17,7 @@ function TripAdder(){
        
         setTrips([...trips, trip]);
         const data = { 
-            name: trip.tripname,
+            name: trip.name,
             start: trip.start,
             end: trip.end,
             country: trip.country }

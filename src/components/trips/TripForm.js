@@ -9,10 +9,10 @@ const TripForm = (props) => {
   var isEditForm = props.isEditForm;
 
   if(props.trip != null){
-    console.log("props.trip: "+props.trip)
-  };
+    console.log("props.trip: "+props.trip.name)
+  }
 
-  const [trip, setTrip] = useState({
+  const [trip, setTrip] = useState( {
     name: props.trip ? props.trip.name : '',
     start: props.trip ? props.trip.start : '',
     end: props.trip ? props.trip.end : '',
@@ -52,10 +52,10 @@ const TripForm = (props) => {
   }
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
+    const { key, value } = event.target;
     setTrip((prevState) => ({
       ...prevState,
-      [name]: value
+      [key]: value
     }));
   };
 
