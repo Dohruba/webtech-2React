@@ -27,7 +27,6 @@ const LoginForm = (props) => {
       email: mail,
       password: password,
     };
-
     const tryLogin = async () => {
       const response = await fetch(`${BASE_URL}/login`, {
         method: "POST",
@@ -38,6 +37,7 @@ const LoginForm = (props) => {
         },
         body: JSON.stringify(tableData),
       })
+        .then((response) => response.json())
         .then((res) => {
           if (res.status === "200") {
             setLogged(true);
