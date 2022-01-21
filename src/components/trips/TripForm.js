@@ -55,6 +55,7 @@ const TripForm = (props) => {
         country
       };
       props.handleOnSubmit(trip);
+      
       setTrip({
         name: '',
         start: '',

@@ -38,7 +38,7 @@ function TripAdder(){
     return(
         <React.Fragment>
         <Header/>
-        <TripList rerender={submitted}/> {/* add props for removing edit and delete buttons on this list*/}
+        <TripList /> {/* add props for removing edit and delete buttons on this list*/}
         <TripForm  isEditForm={false} handleOnSubmit={handleOnSubmit}/>
         </React.Fragment>
     );

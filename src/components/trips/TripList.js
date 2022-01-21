@@ -6,7 +6,7 @@ import '../styles.css';
 
 const BASE_URL = "http://localhost:5000";
 
-const TripList = (props) => {
+const TripList = () => {
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -34,7 +34,7 @@ const TripList = (props) => {
       getTrips();
       console.log("useEff-triplisT")
       return() => mounted = false; //cleanup function
-  }, [props.rerender])
+  }, [])
   
   const handleRemoveTrip = (id) => {
       // setTrips(trips.filter((trip) => trip.trip_id !== id));
