@@ -3,6 +3,27 @@ body{
     
 }
 
+.test{
+    padding-top: 200px;
+}
+
+.main-form {
+  color: #222222;
+  font-size: 18px;
+  width: 100%;
+  padding-top: 100px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.trip-list {
+    padding-top: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 .container{
     text-align: center;
     display: grid;

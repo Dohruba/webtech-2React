@@ -1,39 +1,47 @@
 import "./components/styles.css";
-import "./App.css";
-import LoginForm, { logConfirmation } from "./components/LoginForm";
-import Header from "./components/Structure/Header";
 import React, { useState } from "react";
-import MyMap from "./components/Map/MyMap";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
+import LoginForm from './components/login/LoginForm';
+import TripEditor from './components/trips/TripEditor';
+import TripAdder from './components/trips/TripAdder';
+import TripList from './components/trips/TripList';
+import MyMap from './components/map/MyMap';
+import Footer from "./components/structure/Footer";
+import mapData from "./data/mapData.json";
+
+
+const App = () => {
   const [loggedIn, setLoggedIn] = useState();
   const loginTriedHandler = (result) => {
     setLoggedIn(result);
     console.log("Login: " + result);
   };
 
-  let mainContent = <p>Not logged in yet</p>;
-  if (loggedIn) {
-    mainContent = <MyMap loginState={loggedIn} />;
-  } else {
-    mainContent = (
-      <div>
-        <h3>
-          Jetzt einloggen und deine Reisen <br />
-          ganz einfach über deine individuelle Reisekarte verwalten.
-        </h3>
-        <LoginForm onTryLogin={loginTriedHandler} logged={loggedIn} />
-      </div>
-    );
+  const loadGeoHandler = (data) => {
+    console.log(data);
+    if(changeDone){
+      console.log("SAME");
+      changeDone = false;
+    }
+  };
+  let changeDone = false;
+  const onChangeDone = () =>{
+    changeDone=true;
   }
 
   return (
-    <div className="container">
-      <Header />
-      <main>{mainContent}</main>
-      <footer>© 2021</footer>
-    </div>
+    <BrowserRouter>
+      <Routes>
+      <Route exact path="/" element={<LoginForm onTryLogin={loginTriedHandler}/>}/>
+      <Route exact path="/map" logged={loggedIn} element={<MyMap/>}/>
+      <Route exact path="/addTrip" logged={loggedIn} element={<TripAdder/>}/>
+      <Route exact path="/editTrip" logged={loggedIn} element={<TripList/>}/> 
+      <Route exact path="/editTrip/:id" logged={loggedIn} element={<TripEditor/>}/> 
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
