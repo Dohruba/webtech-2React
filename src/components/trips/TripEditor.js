@@ -21,7 +21,7 @@ function TripEditor(){
     
     let navigate = useNavigate();
     const {id} = useParams(); //gets id from current route
-    
+
     const tripToEdit = trips.find((trip) => trip.trip_id === id);
 
     useEffect(() => {
@@ -45,7 +45,7 @@ function TripEditor(){
         )};
         getTrips();
         return() => mounted = false; //cleanup function
-    }, [id])
+    }, [])
 
     const handleOnSubmit = (trip) => {
         const data = { 
@@ -61,13 +61,11 @@ function TripEditor(){
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
         };
-
         fetch(`${BASE_URL}/trips/` +id, requestOptions)
             .then(response => response.json())
             .then(res => res.status == "200")
       // navigate('/editTrip');
     }
-    
 
     return(
       <div>
@@ -81,31 +79,6 @@ function TripEditor(){
         </main>
       </div>
     );
-
-    /*
-    //Ricardos Part to activate later
-
-    //Geojson sind die Polygone (Schatten auf den Map)
-    const loadData = async () => {
-    const data = await fetch(
-        "https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_admin_0_countries.geojson"
-      );
-      return data.json();
-    };
-    //for dropdown of trips
-    const getNames = async () => {
-        const geoJson = await loadData();
-        geoJson.features.forEach(loadNames);
-      };
-    
-      function loadNames(item) {
-        //console.log(item.properties.name);
-        let dropDownMenu = document.querySelector(".dropdown");
-        let option = document.createElement("option");
-        option.appendChild(document.createTextNode(item.properties.name));
-        dropDownMenu.append(option);
-      }
-    */
 }
 
 export default TripEditor;

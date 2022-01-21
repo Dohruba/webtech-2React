@@ -16,11 +16,12 @@ const TripForm = (props) => {
     country: ''});
 
   const updateTrip = () => {
+    // console.log("props.trip.country: "+props.trip.country);
     const tripToEdit = {
     name: props.trip ? props.trip.name : '',
     start: props.trip ? props.trip.start : '',
     end: props.trip ? props.trip.end : '',
-    country: props.trip ? props.trip.country : '',
+    // country: props.trip ? props.trip.country : '',
     }
     setTrip(tripToEdit);
   }
@@ -28,7 +29,8 @@ const TripForm = (props) => {
   useEffect(()=>{
     let mounted = true;
     if(mounted){
-    updateTrip();}
+    updateTrip();
+    }
     return() => mounted = false;
   },[]);
 
@@ -75,7 +77,7 @@ const TripForm = (props) => {
   const [selected, setSelected] = useState('');
   const countrySelectedHandler = (country) =>{
     setSelected(country);
-    console.log(country);
+    console.log("country"+country);
   }
 
   return (
@@ -115,11 +117,11 @@ const TripForm = (props) => {
             onChange={handleInputChange}
           />
         </Form.Group>
-        {/* <Form.Group controlId="country">
+        <Form.Group controlId="country">
           <Form.Label>Reiseziel: </Form.Label>
           <DropdownCountries selected={selected} 
           onCountrySelect={countrySelectedHandler} onChange={handleInputChange}/>
-        </Form.Group> */}
+        </Form.Group>
         {isEditForm 
         ? <Button variant="primary" type="submit" className="submit-btn">
         Änderungen speichern </Button>
