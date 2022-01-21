@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
 import '../styles.css';
+import Moment from 'moment';
 
 const TripForm = (props) => {
 
   var isEditForm = props.isEditForm;
 
   const [trip, setTrip] = useState(() =>{
-    return{
+    return{ 
     tripname: props.trip ? props.trip.tripname : '',
     start: props.trip ? props.trip.start : '',
     end: props.trip ? props.trip.end : '',
@@ -32,8 +33,8 @@ const TripForm = (props) => {
       const trip = {
         id: uuidv4(),
         tripname,
-        start: new Date(),
-        end: new Date(),
+        start: formatDate(start),
+        end: formatDate(end),
         country
       };
       props.handleOnSubmit(trip);
@@ -42,6 +43,10 @@ const TripForm = (props) => {
     }
     setErrorMsg(errorMsg);
   };
+
+  function formatDate(date){
+    return Moment.utc(date).format("YYYY-MM-DD");
+  }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
