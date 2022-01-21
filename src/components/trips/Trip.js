@@ -22,7 +22,7 @@ const Trip = ({
   }
 
   return (
-    <Card style={{ width: '18rem', border: '1px' }} className="trip">
+    <Card className="trip">
       <Card.Body>
         <div className="trip-details">
           <div>Reisename: {name}</div>
