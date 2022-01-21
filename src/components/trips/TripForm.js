@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Button} from 'react-bootstrap';
+import { Form, Button, Col, Row} from 'react-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
 import '../styles.css';
 import Moment from 'moment';
@@ -16,6 +16,7 @@ const TripForm = (props) => {
     country: ''});
 
   const updateTrip = () => {
+    // console.log("props.trip.country: "+props.trip.country);
     const tripToEdit = {
     name: props.trip ? props.trip.name : '',
     start: props.trip ? props.trip.start : '',
@@ -29,6 +30,8 @@ const TripForm = (props) => {
     let mounted = true;
     if(mounted){
     updateTrip();}
+    updateTrip();
+    }
     return() => mounted = false;
   },[]);
 
@@ -83,16 +86,17 @@ const TripForm = (props) => {
   // const [selected, setSelected] = useState('');
   // const countrySelectedHandler = (country) =>{
   //   setSelected(country);
+  //   console.log("country"+country);
+
   // }
 
   return (
     <div className="main-form">
       {errorMsg && <p className="errorMsg">{errorMsg}</p>}
       <Form onSubmit={handleOnSubmit}>
-        <Form.Group controlId="name">
+        <Form.Group  className="input-control" controlId="name">
           <Form.Label>Reisename: </Form.Label>
           <Form.Control
-            className="input-control"
             type="text"
             name="name"
             value={name}
@@ -100,10 +104,9 @@ const TripForm = (props) => {
             onChange={handleInputChange}
           />
         </Form.Group>
-        <Form.Group controlId="start">
+        <Form.Group className="input-control" controlId="start">
           <Form.Label>Startdatum: </Form.Label>
           <Form.Control
-            className="input-control"
             type="date"
             name="start"
             value={start}
@@ -111,10 +114,9 @@ const TripForm = (props) => {
             onChange={handleInputChange}
           />
         </Form.Group>
-        <Form.Group controlId="end">
+        <Form.Group className="input-control" controlId="end">
           <Form.Label>Enddatum: </Form.Label>
           <Form.Control
-            className="input-control"
             type="date"
             name="end"
             value={end}
@@ -122,12 +124,16 @@ const TripForm = (props) => {
             onChange={handleInputChange}
           />
         </Form.Group>
-        <Form.Group controlId="country">
+        <Form.Group className="input-control" controlId="country">
+        <Row>
+          <Col>
           <Form.Label>Reiseziel: </Form.Label>
-
+          </Col>
+          <Col>
           <DropdownCountries selected={trip.country} name="country"
           onSelect={handleInputChange}/>
-
+          </Col>
+        </Row>
         </Form.Group>
         {isEditForm 
         ? <Button variant="primary" type="submit" className="submit-btn">

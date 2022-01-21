@@ -32,7 +32,6 @@ const TripList = () => {
         }
       )}
       getTrips();
-      console.log("useEff-triplisT")
       return() => mounted = false; //cleanup function
   }, [])
   

@@ -10,7 +10,6 @@ import MyMap from './components/Map/MyMap';
 import Footer from "./components/structure/Footer";
 import mapData from "./data/mapData.json";
 
-
 const App = () => {
   const [loggedIn, setLoggedIn] = useState();
   const loginTriedHandler = (result) => {
@@ -34,7 +33,8 @@ const App = () => {
     <BrowserRouter>
       <Routes>
       <Route exact path="/" element={<LoginForm onTryLogin={loginTriedHandler}/>}/>
-      <Route exact path="/map" logged={loggedIn} element={<MyMap/>}/>
+      {/* deactivate map for better testing performance */}
+      {/* <Route exact path="/map" logged={loggedIn} element={<MyMap/>}/> */} 
       <Route exact path="/addTrip" logged={loggedIn} element={<TripAdder/>}/>
       <Route exact path="/editTrip" logged={loggedIn} element={<TripList/>}/> 
       <Route exact path="/editTrip/:id" logged={loggedIn} element={<TripEditor/>}/> 
