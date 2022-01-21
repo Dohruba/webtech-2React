@@ -6,7 +6,7 @@ import LoginForm from './components/login/LoginForm';
 import TripEditor from './components/trips/TripEditor';
 import TripAdder from './components/trips/TripAdder';
 import TripList from './components/trips/TripList';
-import MyMap from './components/map/MyMap';
+import MyMap from './components/Map/MyMap';
 import Footer from "./components/structure/Footer";
 import mapData from "./data/mapData.json";
 
