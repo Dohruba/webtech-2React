@@ -129,5 +129,4 @@ const MyMap = (props) => {
 export default MyMap;
 
 /*
-
  */

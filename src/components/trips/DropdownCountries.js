@@ -14,6 +14,7 @@ const DropdownCountries = (props) =>{
     dropdownContent = mapData.features.map((feature) =>(
       <option>{feature.properties.name}</option>
     ));
+    dropdownContent.unshift(<option>Bitte Land wählen</option>)
   }
     return(
         <div className='dropdown-countries'>

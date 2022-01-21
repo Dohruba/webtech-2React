@@ -43,7 +43,7 @@ const TripForm = (props) => {
 
     const allFieldsFilled = values.every((field) => {
       const value = `${field}`.trim();
-      return value !== '' && value !== '0';
+      return value !== '' && value !== '0' && value !== "Bitte Land wählen";
     });
 
 
@@ -81,6 +81,10 @@ const TripForm = (props) => {
     }));
   };
 
+
+  if(trip.country.length == 0){
+    trip.country = "Bitte Land wählen";
+  }
   return (
     <div className="main-form">
       {errorMsg && <p className="errorMsg">{errorMsg}</p>}

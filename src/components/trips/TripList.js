@@ -6,7 +6,7 @@ import '../styles.css';
 
 const BASE_URL = "http://localhost:5000";
 
-const TripList = (props) => {
+const TripList = () => {
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);

@@ -12,7 +12,6 @@ function TripAdder(){
     const BASE_URL = "http://localhost:5000";
 
     const [trips, setTrips] = useState([]);
-
     const handleOnSubmit = (trip) => {
         setTrips([...trips, trip]);
         const data = { 
@@ -31,13 +30,14 @@ function TripAdder(){
         fetch(`${BASE_URL}/trips`, requestOptions)
             .then(response => response.json())
             .then(res => res.status == "200");
+        submitted = !submitted;
       };
 
     return(
         <React.Fragment>
         <Header/>
-        <TripList/> {/* add props for removing edit and delete buttons on this list*/}
-        <TripForm isEditForm={false} handleOnSubmit={handleOnSubmit}/>
+        <TripList /> {/* add props for removing edit and delete buttons on this list*/}
+        <TripForm  isEditForm={false} handleOnSubmit={handleOnSubmit}/>
         </React.Fragment>
     );
 
