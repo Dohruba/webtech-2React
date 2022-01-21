@@ -7,13 +7,12 @@ const TripForm = (props) => {
 
   var isEditForm = props.isEditForm;
 
-  const [trip, setTrip] = useState(() =>{
-    return{
+  const [trip, setTrip] = useState({
     tripname: props.trip ? props.trip.tripname : '',
     start: props.trip ? props.trip.start : '',
     end: props.trip ? props.trip.end : '',
     country: props.trip ? props.trip.country : '',
-  }});
+  });
 
   const [errorMsg, setErrorMsg] = useState('');
   const { tripname, start, end, country } = trip;

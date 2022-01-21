@@ -1,17 +1,20 @@
 import Header from "../structure/Header";
 import Footer from "../structure/Footer";
 import "../styles.css";
-import mapData from "../../data/mapData.json"
+import mapData from "../../data/mapData.json";
 import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./MyMap.css";
 
 const MyMap = (props) => {
-  let mapGeojson = props.mapGeo;
-  let filteredData = [];
-  let filteredVisited = [];
-
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [trips, setTrips] = useState([]);
+  let mapGeojson = mapData;
+  let filteredVisited;
+  let filteredGeo;
+  let visitedCountries = [];
   //const BASE_URL = "https://travelsitebackend.herokuapp.com";
   const BASE_URL = "http://localhost:5000";
 
@@ -27,84 +30,104 @@ const MyMap = (props) => {
     color: "#a9801a",
     weight: 1.5,
   };
+
+  const fillVisitedCountries = (trips) => {
+    let countries = [];
+    trips.forEach((element) => {
+      countries.push(element.country);
+    });
+    console.log(trips);
+    console.log(countries);
+    return countries;
+  };
+
   useEffect(() => {
     fetch(`${BASE_URL}/trips`, {
       method: "GET",
       credentials: "include",
     })
       .then((response) => response.json())
-      .then((trip) => {
-        let tripsJSON = trip;
-        //console.log(tripsJSON);
-        let visitedCountries = [];
-        if (tripsJSON.length > 0) {
-          tripsJSON.forEach((trip) => {
-            visitedCountries.push(trip.country);
-          });
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setTrips(result);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
         }
-        //console.log(visitedCountries);
-        //console.log(props.mapGeo);
-        const displayData = async () => {
-          /*filteredData = {
-            ...mapGeojson,
-            features: mapGeojson.features.filter((feature) =>
-              visitedCountries.includes(feature.properties.name)
-            ),
-          };*/
-
-          filteredVisited = {
-            ...mapGeojson,
-            features: mapGeojson.features.filter(
-              (feature) => visitedCountries.includes(feature.properties.name)
-            ),
-          };
-          console.log(filteredVisited);
-          props.onLoadMap(filteredVisited);
-        };
-        displayData();
-      });
-
+      );
   }, []);
 
-  const visitedCountries = async (country, layer) => {
-     if(country.properties.name ==="Spain") {console.log(props.mapGeo.features.includes(country));
-     console.log(country);
-     }
-     if(props.mapGeo.features.includes(country)){
-      layer.setStyle(visitedCountryStyle);
-     }     
+  visitedCountries = fillVisitedCountries(trips);
+
+  const displayData = () => {
+    let filtered = {
+      ...mapGeojson,
+      features: mapGeojson.features.filter((feature) =>
+        visitedCountries.includes(feature.properties.name)
+      ),
+    };
+    return filtered;
   };
-  const notVisitedCountries = async (country,layer) =>{
-    if(!props.mapGeo.features.includes(country)){
+
+  filteredVisited = displayData();
+  console.log(filteredVisited.features);
+
+  const visitedCountriesStyle = async (country, layer) => {
+    if (filteredVisited.features.includes(country)) {
+      layer.setStyle(visitedCountryStyle);
+      console.log(country);
+    }
+  };
+  const notVisitedCountriesStyle = (country, layer) => {
+    if (!filteredVisited.features.includes(country)) {
       layer.setStyle(countryStyle);
-     }else{
-       layer.setStyle({
-         color: "black",
-         fillColor: "black",
-         weight: 0,
-         fillOpacity: 0,
-       })
-     }
+    } else {
+      layer.setStyle({
+        color: "black",
+        fillColor: "black",
+        weight: 0,
+        fillOpacity: 0,
+      });
+    }
+  };
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  } else if (!isLoaded) {
+    return <div>Warten bis Daten geladen sind...</div>;
+  } else {
+    return (
+      <div>
+        <Header />
+        <main style={{ paddingTop: "150px" }}>
+          <MapContainer
+            style={{ height: "45vh", width: "90vh" }}
+            zoom={3}
+            center={[20, 100]}
+            scrollWheelZoom={true}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <GeoJSON
+              data={mapGeojson}
+              onEachFeature={visitedCountriesStyle}
+            ></GeoJSON>
+            <GeoJSON
+              data={mapGeojson}
+              onEachFeature={notVisitedCountriesStyle}
+            ></GeoJSON>
+          </MapContainer>
+        </main>
+      </div>
+    );
   }
-  return (
-    <div>
-      <Header />
-      <main style={{ paddingTop: "150px" }}>
-        <MapContainer
-          style={{ height: "45vh", width: "100vh" }}
-          zoom={2}
-          center={[20, 100]}
-          scrollWheelZoom={true}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <GeoJSON data={mapGeojson} onEachFeature={visitedCountries}></GeoJSON>
-          <GeoJSON data={mapData} onEachFeature={notVisitedCountries}></GeoJSON>
-        </MapContainer>
-      </main>
-    </div>
-  );
 };
 export default MyMap;
+
+/*
+
+ */

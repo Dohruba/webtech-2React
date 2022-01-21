@@ -22,14 +22,18 @@ const App = () => {
     setLoggedIn(result);
     console.log("Login: " + result);
   };
-  const [tripsGeo, setTripsGeo] = useState(mapData);
+
   const loadGeoHandler = (data) => {
     console.log(data);
-    setTripsGeo((prevMap) => {
-      return data;
-    });
-    //console.log(tripsGeo);
+    if(changeDone){
+      console.log("SAME");
+      changeDone = false;
+    }
   };
+  let changeDone = false;
+  const onChangeDone = () =>{
+    changeDone=true;
+  }
 
   return (
     <BrowserRouter>
@@ -37,13 +41,13 @@ const App = () => {
         <Route
           exact
           path="/"
-          element={<LoginForm onTryLogin={loginTriedHandler} />}
+          element={<LoginForm onTryLogin={loginTriedHandler} onChange={onChangeDone} />}
         />
         <Route
           exact
           path="/map"
           logged={loggedIn}
-          element={<MyMap onLoadMap={loadGeoHandler} mapGeo={tripsGeo} />}
+          element={<MyMap onLoadMap={loadGeoHandler}/>}
         />
         <Route
           exact
