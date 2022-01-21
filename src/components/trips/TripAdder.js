@@ -12,7 +12,6 @@ function TripAdder(){
     const BASE_URL = "http://localhost:5000";
 
     const [trips, setTrips] = useState([]);
-    let submitted = false;
     const handleOnSubmit = (trip) => {
         setTrips([...trips, trip]);
         const data = { 

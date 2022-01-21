@@ -33,7 +33,7 @@ const TripList = () => {
       )}
       getTrips();
       return() => mounted = false; //cleanup function
-  }, [])
+  }, [trips])
   
   const handleRemoveTrip = (id) => {
       // setTrips(trips.filter((trip) => trip.trip_id !== id));
