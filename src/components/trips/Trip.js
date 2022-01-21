@@ -12,22 +12,34 @@ const Trip = ({
   handleRemoveTrip
 }) => {
   let navigate = useNavigate();
+
+  const path = window.location.pathname;
+  let editPath = false;
+  if(path==='/editTrip'){
+    editPath = true;
+  }else{
+    editPath = false;
+  }
+
   return (
-    <Card style={{ width: '18rem' }} className="trip">
+    <Card className="trip">
       <Card.Body>
-        <Card.Title className="trip-title">{name}</Card.Title>
         <div className="trip-details">
           <div>Reisename: {name}</div>
           <div>Startdatum: {new Date(start).toDateString()} </div>
           <div>Enddatum: {new Date(end).toDateString()} </div>
           <div>Reiseziel: {country}</div>
         </div>
+        {editPath
+        ? <div>
         <Button variant="primary" onClick={() => navigate(`/editTrip/${trip_id}`)}>
           Bearbeiten
-          </Button>{' '}
+          </Button>
         <Button variant="danger" onClick={() => handleRemoveTrip(trip_id)}>
           Löschen
         </Button>
+        </div>
+        : null}
       </Card.Body>
     </Card>
   );

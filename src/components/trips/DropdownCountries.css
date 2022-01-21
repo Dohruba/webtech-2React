@@ -1,21 +1,16 @@
 .dropdown-countries {
-  color: white;
+  background-color: white;
 }
 
 .dropdown-countries__control {
   display: main;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  margin: 1rem 0;
 }
 
 .dropdown-countries label {
-  font-weight: bold;
+  font-size: 15px;
 }
 
 .dropdown-countries select {
   font: inherit;
   padding: 0.5rem 3rem;
-  font-weight: bold;
 }
