@@ -13,8 +13,11 @@ function TripAdder(){
 
     const [trips, setTrips] = useState([]);
 
+    // useEffect(() =>{
+
+    // })
+
     const handleOnSubmit = (trip) => {
-       
         setTrips([...trips, trip]);
         const data = { 
             name: trip.name,

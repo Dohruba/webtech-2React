@@ -5,7 +5,7 @@ import mapData from "../../data/mapData.json";
 const DropdownCountries = (props) =>{
 
   const changeCountryHandler = (select) =>{
-    props.onSelect(select.target.value);
+    props.onSelect(select);
   }
 
   let dropdownContent = <option>No Countries Loaded</option>;
@@ -18,7 +18,8 @@ const DropdownCountries = (props) =>{
     return(
         <div className='dropdown-countries'>
         <div className='dropdown-countries__control'>
-        <select name="country" value={props.selected} onChange={changeCountryHandler}>
+          <label>Reiseziel: </label>
+          <select name="country" value={props.selected} onChange={changeCountryHandler}>
             {dropdownContent}
           </select>
         </div>

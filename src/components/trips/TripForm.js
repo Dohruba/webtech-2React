@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Button, Col, Row} from 'react-bootstrap';
+import { Form, Button} from 'react-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
 import '../styles.css';
 import Moment from 'moment';
@@ -16,23 +16,22 @@ const TripForm = (props) => {
     country: ''});
 
   const updateTrip = () => {
-    // console.log("props.trip.country: "+props.trip.country);
     const tripToEdit = {
     name: props.trip ? props.trip.name : '',
     start: props.trip ? props.trip.start : '',
     end: props.trip ? props.trip.end : '',
     country: props.trip ? props.trip.country : '',
     }
+    // console.log(props);
     setTrip(tripToEdit);
   }
 
   useEffect(()=>{
     let mounted = true;
     if(mounted){
-    updateTrip();
-    }
+    updateTrip();}
     return() => mounted = false;
-  },[]);
+  },[props]);
 
   const [errorMsg, setErrorMsg] = useState('');
   const { name, start, end, country } = trip;
@@ -47,6 +46,7 @@ const TripForm = (props) => {
       return value !== '' && value !== '0';
     });
 
+
     if (allFieldsFilled) {
       const trip = {
         id: uuidv4(),
@@ -56,6 +56,13 @@ const TripForm = (props) => {
         country
       };
       props.handleOnSubmit(trip);
+
+      setTrip({
+        name: '',
+        start: '',
+        end: '',
+        country: ''});
+
     } else {
       errorMsg = 'Bitte alle Felder ausfüllen.';
     }
@@ -74,19 +81,14 @@ const TripForm = (props) => {
     }));
   };
 
-  // const [selected, setSelected] = useState('');
-  // const countrySelectedHandler = (country) =>{
-  //   setSelected(country);
-  //   console.log("country"+country);
-  // }
-
   return (
     <div className="main-form">
       {errorMsg && <p className="errorMsg">{errorMsg}</p>}
       <Form onSubmit={handleOnSubmit}>
-        <Form.Group  className="input-control" controlId="name">
+        <Form.Group controlId="name">
           <Form.Label>Reisename: </Form.Label>
           <Form.Control
+            className="input-control"
             type="text"
             name="name"
             value={name}
@@ -94,9 +96,10 @@ const TripForm = (props) => {
             onChange={handleInputChange}
           />
         </Form.Group>
-        <Form.Group className="input-control" controlId="start">
+        <Form.Group controlId="start">
           <Form.Label>Startdatum: </Form.Label>
           <Form.Control
+            className="input-control"
             type="date"
             name="start"
             value={start}
@@ -104,9 +107,10 @@ const TripForm = (props) => {
             onChange={handleInputChange}
           />
         </Form.Group>
-        <Form.Group className="input-control" controlId="end">
+        <Form.Group controlId="end">
           <Form.Label>Enddatum: </Form.Label>
           <Form.Control
+            className="input-control"
             type="date"
             name="end"
             value={end}
@@ -114,16 +118,9 @@ const TripForm = (props) => {
             onChange={handleInputChange}
           />
         </Form.Group>
-        <Form.Group className="input-control" controlId="country">
-        <Row>
-          <Col>
-          <Form.Label>Reiseziel: </Form.Label>
-          </Col>
-          <Col>
+        <Form.Group controlId="country">
           <DropdownCountries selected={trip.country} name="country"
           onSelect={handleInputChange}/>
-          </Col>
-        </Row>
         </Form.Group>
         {isEditForm 
         ? <Button variant="primary" type="submit" className="submit-btn">
