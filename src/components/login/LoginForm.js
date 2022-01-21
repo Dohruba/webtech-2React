@@ -43,8 +43,6 @@ const LoginForm = (props) => {
         .then((response) => response.json())
         .then((res) => {
           if (res.status === "200") {
-            console.log("alles cool! ");
-            props.onChange();
             setLogged(true);
             props.onTryLogin(true);
             navigate('/map');

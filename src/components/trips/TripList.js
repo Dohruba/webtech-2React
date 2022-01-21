@@ -6,32 +6,47 @@ import '../styles.css';
 
 const BASE_URL = "http://localhost:5000";
 
-const TripList = () => {
+const TripList = (props) => {
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [trips, setTrips] = useState([]);
 
   useEffect(() => {
+    let mounted = true;
+    async function getTrips(){
     fetch(`${BASE_URL}/trips`, {
       method: "GET",
       credentials: "include",
     }).then(res => res.json())
       .then(
         (result) => {
+          if(mounted){
           setIsLoaded(true);
-          setTrips(result);
+          setTrips(result);}
         },
         (error) => {
+          if(mounted){
           setIsLoaded(true);
-          setError(error);
+          setError(error);}
         }
-      )
+      )}
+      getTrips();
+      console.log("useEff-triplisT")
+      return() => mounted = false; //cleanup function
   }, [])
   
   const handleRemoveTrip = (id) => {
-      setTrips(trips.filter((trip) => trip.trip_id !== id));
+      // setTrips(trips.filter((trip) => trip.trip_id !== id));
+    const requestOptions = {
+        method: "DELETE",
+        mode: "cors",
+        credentials: "include",
+        headers: { "Content-Type": "application/json; charset=UTF-8" }
     };
+    fetch(`${BASE_URL}/trips/`+id, requestOptions)
+        .then(res => console.log(res));   
+  };
 
   if (error) {
     return <div>Error: {error.message}</div>;

@@ -7,34 +7,76 @@ import TripList from "./TripList";
 import Header from '../structure/Header';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
-function TripEditor({trips, setTrips}){
+//connect Frontend to Backend
+// const BASE_URL = "https://travelsitebackend.herokuapp.com";
+const BASE_URL = "http://localhost:5000";
 
+function TripEditor(){
+
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [trips, setTrips] = useState([]);
+    
     let navigate = useNavigate();
-    const {id} = useParams();
-    const tripToEdit = trips.find((trip) => trip.id === id);
+    const {id} = useParams(); //gets id from current route
+    
+    const tripToEdit = trips.find((trip) => trip.trip_id === id);
+
+    useEffect(() => {
+      let mounted = true;
+      async function getTrips(){
+      fetch(`${BASE_URL}/trips`, {
+        method: "GET",
+        credentials: "include",
+      }).then(res => res.json())
+        .then(
+          (result) => {
+            if(mounted){
+            setIsLoaded(true);
+            setTrips(result);}
+          },
+          (error) => {
+            if(mounted){
+            setIsLoaded(true);
+            setError(error);}
+          }
+        )};
+        getTrips();
+        return() => mounted = false; //cleanup function
+    }, [id])
 
     const handleOnSubmit = (trip) => {
-      const filteredTrips = trips.filter((trip) => trip.id !== id);
-      setTrips([trip, ...filteredTrips]);
-      navigate('/editTrip');
-    }
+        const data = { 
+            name: trip.tripname,
+            start: trip.start,
+            end: trip.end,
+            country: trip.country }
+      
+        const requestOptions = {
+            method: "PATCH",
+            mode: "cors",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        };
 
-    //connect Frontend to Backend
-    // const BASE_URL = "https://travelsitebackend.herokuapp.com";
-    const BASE_URL = "http://localhost:5000";
+        fetch(`${BASE_URL}/trips/` +id, requestOptions)
+            .then(response => response.json())
+            .then(res => res.status == "200")
+      // navigate('/editTrip');
+    }
     
-    // let dataArray = [];
-    // var arrayLength = 0;
 
     return(
       <div>
         <Header/>
         <main>
-          <React.Fragment>
-          <TripList trips={trips} setTrips={setTrips}/>
-          <TripForm isEditForm={true} trip={tripToEdit} handleOnSubmit={handleOnSubmit}/>
+        <React.Fragment>
+          <div className="test">
+          <TripForm isEditForm={true} trip={tripToEdit} handleOnSubmit={handleOnSubmit}/>
+          </div>
         </React.Fragment>
         </main>
       </div>

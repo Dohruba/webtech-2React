@@ -2,25 +2,31 @@ import React, { useState } from 'react';
 import { Form, Button} from 'react-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
 import '../styles.css';
+import Moment from 'moment';
 import DropdownCountries from './DropdownCountries';
 
 const TripForm = (props) => {
 
   var isEditForm = props.isEditForm;
 
-  const [trip, setTrip] = useState({
-    tripname: props.trip ? props.trip.tripname : '',
+
+  if(props.trip != null){
+    console.log("props.trip: "+props.trip.name)
+  }
+
+  const [trip, setTrip] = useState( {
+    name: props.trip ? props.trip.name : '',
     start: props.trip ? props.trip.start : '',
     end: props.trip ? props.trip.end : '',
     country: props.trip ? props.trip.country : '',
   });
 
   const [errorMsg, setErrorMsg] = useState('');
-  const { tripname, start, end, country } = trip;
+  const { name, start, end, country } = trip;
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    const values = [tripname, start, end, country];
+    const values = [name, start, end, country];
     let errorMsg = '';
 
     const allFieldsFilled = values.every((field) => {
@@ -31,9 +37,9 @@ const TripForm = (props) => {
     if (allFieldsFilled) {
       const trip = {
         id: uuidv4(),
-        tripname,
-        start: new Date(),
-        end: new Date(),
+        name,
+        start: formatDate(start),
+        end: formatDate(end),
         country
       };
       props.handleOnSubmit(trip);
@@ -43,11 +49,15 @@ const TripForm = (props) => {
     setErrorMsg(errorMsg);
   };
 
+  function formatDate(date){
+    return Moment.utc(date).format("YYYY-MM-DD");
+  }
+
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
+    const { key, value } = event.target;
     setTrip((prevState) => ({
       ...prevState,
-      [name]: value
+      [key]: value
     }));
   };
 
@@ -67,8 +77,8 @@ const TripForm = (props) => {
           <Form.Control
             className="input-control"
             type="text"
-            name="tripname"
-            value={tripname}
+            name="name"
+            value={name}
             placeholder="Reisenamen eingeben"
             onChange={handleInputChange}
           />
