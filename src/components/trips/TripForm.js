@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Button} from 'react-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
 import '../styles.css';
@@ -9,16 +9,28 @@ const TripForm = (props) => {
 
   var isEditForm = props.isEditForm;
 
-
-  if(props.trip != null){
-    console.log("props.trip: "+props.trip.name)
-  }
-
   const [trip, setTrip] = useState( {
+    name: '',
+    start: '',
+    end: '',
+    country: ''});
+
+  const updateTrip = () => {
+    const tripToEdit = {
     name: props.trip ? props.trip.name : '',
     start: props.trip ? props.trip.start : '',
     end: props.trip ? props.trip.end : '',
     country: props.trip ? props.trip.country : '',
+    }
+    console.log("tripToEdit: "+tripToEdit);
+    setTrip(tripToEdit);
+  }
+
+  useEffect(()=>{
+    let mounted = true;
+    if(mounted){
+    updateTrip();}
+    return() => mounted = false;
   });
 
   const [errorMsg, setErrorMsg] = useState('');
@@ -61,8 +73,7 @@ const TripForm = (props) => {
     }));
   };
 
-
-  const [selected, setSelected] = useState("Germany");
+  const [selected, setSelected] = useState('');
   const countrySelectedHandler = (country) =>{
     setSelected(country);
     console.log(country);
@@ -107,15 +118,8 @@ const TripForm = (props) => {
         </Form.Group>
         <Form.Group controlId="country">
           <Form.Label>Reiseziel: </Form.Label>
-          <DropdownCountries selected={selected} onCountrySelect={countrySelectedHandler} onChange={handleInputChange}/>
-          <Form.Control
-            className="input-control"
-            type="text"
-            name="country"
-            value={country}
-            placeholder="Reiseland eingeben"
-            onChange={handleInputChange}
-          />
+          <DropdownCountries selected={selected} 
+          onCountrySelect={countrySelectedHandler} onChange={handleInputChange}/>
         </Form.Group>
         {isEditForm 
         ? <Button variant="primary" type="submit" className="submit-btn">
