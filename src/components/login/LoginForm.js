@@ -29,6 +29,7 @@ const LoginForm = (props) => {
       email: mail,
       password: password,
     };
+    console.log(tableData);
     const tryLogin = async () => {
       const response = await fetch(`${BASE_URL}/login`, {
         method: "POST",
@@ -73,7 +74,7 @@ const LoginForm = (props) => {
                 über deine individuelle Reisekarte 
                 verwalten.
             </h3>
-    <form className="login" >
+    <div className="login" >
       <label htmlFor="email">E-Mail</label>
       <input type="email" id="email" value={enteredMail} onChange={mailChangeHandler} />
       <br />
@@ -85,7 +86,7 @@ const LoginForm = (props) => {
           Jetzt einloggen
         </button>
       </div>
-    </form>
+    </div>
     </main>
         <footer>
             © 2021
