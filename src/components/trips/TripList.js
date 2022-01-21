@@ -4,9 +4,9 @@ import Trip from './Trip';
 import Header from '../structure/Header';
 import '../styles.css';
 
-const BASE_URL = "http://localhost:5000";
+const TripList = ({baseUrl}) => {
 
-const TripList = () => {
+  const BASE_URL = baseUrl;
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);

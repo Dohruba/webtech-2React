@@ -3,12 +3,11 @@ import "../styles.css";
 import { useNavigate } from 'react-router';
 import logo from '../../images/globe.png';
 
-const LoginForm = (props) => {
-  let navigate = useNavigate();
-  //connect Frontend to Backend
-  //const BASE_URL = "https://travelsitebackend.herokuapp.com";
+const LoginForm = ({props, baseUrl}) => {
 
-  const BASE_URL = "http://localhost:5000";
+  const BASE_URL = baseUrl;
+
+  let navigate = useNavigate();
   const [enteredMail, setEnteredMail] = useState("");
   const [enteredPass, setEnteredPass] = useState("");
   const [logged, setLogged] = useState(false);

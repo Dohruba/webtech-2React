@@ -5,12 +5,10 @@ import TripList from './TripList';
 import Header from '../structure/Header';
 import '../styles.css';
 
-function TripAdder(){
+function TripAdder({baseUrl}){
 
-    //connect Frontend to Backend
-    //const BASE_URL = "https://travelsitebackend.herokuapp.com";
-    const BASE_URL = "http://localhost:5000";
-
+    const BASE_URL = baseUrl;
+    
     const [trips, setTrips] = useState([]);
     const handleOnSubmit = (trip) => {
         setTrips([...trips, trip]);
@@ -30,7 +28,6 @@ function TripAdder(){
         fetch(`${BASE_URL}/trips`, requestOptions)
             .then(response => response.json())
             .then(res => res.status == "200");
-        submitted = !submitted;
       };
 
     return(

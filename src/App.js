@@ -11,6 +11,10 @@ import Footer from "./components/structure/Footer";
 import mapData from "./data/mapData.json";
 
 const App = () => {
+  //connect Frontend to Backend
+  //const baseUrl = "https://travelsitebackend.herokuapp.com";
+  const baseUrl = "http://localhost:5000";
+  
   const [loggedIn, setLoggedIn] = useState();
   const loginTriedHandler = (result) => {
     setLoggedIn(result);
@@ -42,7 +46,7 @@ const App = () => {
           exact
           path="/addTrip"
           logged={loggedIn}
-          element={<TripAdder />}
+          element={<TripAdder baseUrl={baseUrl} />}
         />
         <Route
           exact
