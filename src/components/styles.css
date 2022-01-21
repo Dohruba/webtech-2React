@@ -10,6 +10,8 @@ body{
 .trip-details{
     width: auto;
     padding-top: 50px; 
+    border: black;
+    border-width: 1px;
 }
 
 .test{

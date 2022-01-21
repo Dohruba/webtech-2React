@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Button, Card } from 'react-bootstrap';
 import '../styles.css';
 import { useNavigate } from 'react-router';
+import Moment from 'moment';
 
 const Trip = ({
   trip_id,
@@ -14,14 +15,12 @@ const Trip = ({
   let navigate = useNavigate();
 
   const path = window.location.pathname;
-  // let editPath = false;
   const [pathChanged, setPathChanged] = useState('');
 
   useEffect(()=>{
     let mounted = true;
     if(mounted){
-      console.log("useEff.trip.mounted: "+mounted);
-      if(path==='/editTrip'){
+      if(path==='/addTrip'){
         setPathChanged(false);
       }else{
         setPathChanged(true);
@@ -30,13 +29,17 @@ const Trip = ({
     return() => mounted = false;
   },[])
 
+  function formatDate(date){
+    return Moment.utc(date).format("DD.MM.YYYY");
+  }
+
   return (
     <Card className="trip">
       <Card.Body>
         <div className="trip-details">
           <div>Reisename: {name}</div>
-          <div>Startdatum: {new Date(start).toDateString()} </div>
-          <div>Enddatum: {new Date(end).toDateString()} </div>
+          <div>Startdatum: {formatDate(new Date(start))} </div>
+          <div>Enddatum: {formatDate(new Date(end))} </div>
           <div>Reiseziel: {country}</div>
         </div>
         {pathChanged
