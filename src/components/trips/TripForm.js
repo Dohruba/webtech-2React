@@ -57,6 +57,7 @@ const TripForm = (props) => {
       ...prevState,
       [key]: value,
     }));
+    console.log(event.target);
   };
 
   const [selected, setSelected] = useState("Germany");
@@ -104,11 +105,6 @@ const TripForm = (props) => {
         </Form.Group>
         <Form.Group controlId="country">
           <Form.Label>Reiseziel: </Form.Label>
-          <DropdownCountries
-            selected={selected}
-            onCountrySelect={countrySelectedHandler}
-            onChange={handleInputChange}
-          />
           <Form.Control
             className="input-control"
             type="text"
@@ -133,3 +129,9 @@ const TripForm = (props) => {
 };
 
 export default TripForm;
+
+/*          <DropdownCountries
+            selected={selected}
+            onCountrySelect={countrySelectedHandler}
+            onChange={handleInputChange}
+          />*/
