@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./DropdownCountries.css";
 import mapData from "../../data/mapData.json";
+
 const DropdownCountries = (props) =>{
 
   const changeCountryHandler = (select) =>{
@@ -17,7 +18,6 @@ const DropdownCountries = (props) =>{
     return(
         <div className='dropdown-countries'>
         <div className='dropdown-countries__control'>
-          <label>Country</label>
           <select value={props.selected} onChange={changeCountryHandler}>
             {dropdownContent}
           </select>
