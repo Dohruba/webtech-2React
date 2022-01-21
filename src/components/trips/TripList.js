@@ -6,7 +6,7 @@ import '../styles.css';
 
 const BASE_URL = "http://localhost:5000";
 
-const TripList = () => {
+const TripList = (props) => {
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -21,6 +21,7 @@ const TripList = () => {
         (result) => {
           setIsLoaded(true);
           setTrips(result);
+          // props.handleOnSubmit(trip);
         },
         (error) => {
           setIsLoaded(true);
@@ -30,7 +31,15 @@ const TripList = () => {
   }, [])
   
   const handleRemoveTrip = (id) => {
-      setTrips(trips.filter((trip) => trip.trip_id !== id));
+      // setTrips(trips.filter((trip) => trip.trip_id !== id));
+    const requestOptions = {
+        method: "DELETE",
+        mode: "cors",
+        credentials: "include",
+        headers: { "Content-Type": "application/json; charset=UTF-8" }
+    };
+    fetch(`${BASE_URL}/trips/`+id, requestOptions)
+        .then(res => console.log(res));   
     };
 
   if (error) {

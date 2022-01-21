@@ -8,20 +8,23 @@ const TripForm = (props) => {
 
   var isEditForm = props.isEditForm;
 
-  const [trip, setTrip] = useState(() =>{
-    return{ 
-    tripname: props.trip ? props.trip.tripname : '',
+  if(props.trip != null){
+    console.log("props.trip: "+props.trip)
+  };
+
+  const [trip, setTrip] = useState({
+    name: props.trip ? props.trip.name : '',
     start: props.trip ? props.trip.start : '',
     end: props.trip ? props.trip.end : '',
     country: props.trip ? props.trip.country : '',
-  }});
+  });
 
   const [errorMsg, setErrorMsg] = useState('');
-  const { tripname, start, end, country } = trip;
+  const { name, start, end, country } = trip;
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    const values = [tripname, start, end, country];
+    const values = [name, start, end, country];
     let errorMsg = '';
 
     const allFieldsFilled = values.every((field) => {
@@ -32,7 +35,7 @@ const TripForm = (props) => {
     if (allFieldsFilled) {
       const trip = {
         id: uuidv4(),
-        tripname,
+        name,
         start: formatDate(start),
         end: formatDate(end),
         country
@@ -65,8 +68,8 @@ const TripForm = (props) => {
           <Form.Control
             className="input-control"
             type="text"
-            name="tripname"
-            value={tripname}
+            name="name"
+            value={name}
             placeholder="Reisenamen eingeben"
             onChange={handleInputChange}
           />
