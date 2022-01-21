@@ -6,8 +6,13 @@ import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./MyMap.css";
+import { useNavigate } from 'react-router';
 
 const MyMap = (props) => {
+
+  if(props.location)console.log(props.location.some);
+  console.log(props);
+
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [trips, setTrips] = useState([]);
@@ -17,6 +22,9 @@ const MyMap = (props) => {
   let visitedCountries = [];
   //const BASE_URL = "https://travelsitebackend.herokuapp.com";
   const BASE_URL = "http://localhost:5000";
+
+  let navigate = useNavigate();
+
 
   let countryStyle = {
     fillColor: "black",
@@ -36,12 +44,15 @@ const MyMap = (props) => {
     trips.forEach((element) => {
       countries.push(element.country);
     });
-    console.log(trips);
-    console.log(countries);
+    // console.log(trips);
+    // console.log(countries);
     return countries;
   };
 
   useEffect(() => {
+    if(!props.logged){
+      navigate('/');
+    }
     fetch(`${BASE_URL}/trips`, {
       method: "GET",
       credentials: "include",
@@ -72,12 +83,12 @@ const MyMap = (props) => {
   };
 
   filteredVisited = displayData();
-  console.log(filteredVisited.features);
+  // console.log(filteredVisited.features);
 
   const visitedCountriesStyle = async (country, layer) => {
     if (filteredVisited.features.includes(country)) {
       layer.setStyle(visitedCountryStyle);
-      console.log(country);
+      // console.log(country);
     }
   };
   const notVisitedCountriesStyle = (country, layer) => {
@@ -93,6 +104,10 @@ const MyMap = (props) => {
     }
   };
 
+  const logout = () => {
+    props.onLogout();
+  }
+
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
@@ -100,7 +115,7 @@ const MyMap = (props) => {
   } else {
     return (
       <div>
-        <Header />
+        <Header onLogout={logout}/>
         <main style={{ paddingTop: "150px" }}>
           <MapContainer
             style={{ height: "45vh", width: "90vh" }}
