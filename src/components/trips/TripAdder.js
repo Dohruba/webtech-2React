@@ -21,7 +21,6 @@ function TripAdder(){
             start: trip.start,
             end: trip.end,
             country: trip.country }
-        console.log("data: "+data.end);
 
         const requestOptions = {
             method: "POST",
@@ -32,7 +31,7 @@ function TripAdder(){
         };
         fetch(`${BASE_URL}/trips`, requestOptions)
             .then(response => response.json())
-            .then(res => console.log(res));
+            .then(res => res.status == "200");
       };
 
     return(
