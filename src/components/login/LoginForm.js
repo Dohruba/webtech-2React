@@ -15,11 +15,9 @@ const LoginForm = (props) => {
 
   const mailChangeHandler = (event) => {
     setEnteredMail(event.target.value);
-    //console.log(event);
   };
   const passChangeHandler = (event) => {
     setEnteredPass(event.target.value);
-    //console.log(event.target.value);
   };
 
   const clickHandler = () => {
@@ -29,7 +27,7 @@ const LoginForm = (props) => {
       email: mail,
       password: password,
     };
-    console.log(tableData);
+
     const tryLogin = async () => {
       const response = await fetch(`${BASE_URL}/login`, {
         method: "POST",
@@ -40,13 +38,12 @@ const LoginForm = (props) => {
         },
         body: JSON.stringify(tableData),
       })
-        .then((response) => response.json())
         .then((res) => {
           if (res.status === "200") {
             setLogged(true);
             props.onTryLogin(true);
             navigate('/map');
-            return true;   
+            return true;
           } else {
             setLogged(false);
             props.onTryLogin(false);

@@ -115,11 +115,11 @@ const TripForm = (props) => {
             onChange={handleInputChange}
           />
         </Form.Group>
-        <Form.Group controlId="country">
+        {/* <Form.Group controlId="country">
           <Form.Label>Reiseziel: </Form.Label>
           <DropdownCountries selected={selected} 
           onCountrySelect={countrySelectedHandler} onChange={handleInputChange}/>
-        </Form.Group>
+        </Form.Group> */}
         {isEditForm 
         ? <Button variant="primary" type="submit" className="submit-btn">
         Änderungen speichern </Button>
