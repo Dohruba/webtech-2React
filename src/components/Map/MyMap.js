@@ -1,5 +1,5 @@
 import Header from "../structure/Header";
-import Footer from "../structure/Footer";
+import TripList from "../trips/TripList";
 import "../styles.css";
 import mapData from "../../data/mapData.json";
 import React, { useEffect, useState } from "react";
@@ -7,6 +7,7 @@ import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./MyMap.css";
 import { useNavigate } from 'react-router';
+//import { Grid, Row, Col} from 'react-bootstrap';
 
 const MyMap = (props) => {
 
@@ -24,7 +25,6 @@ const MyMap = (props) => {
   const BASE_URL = props.baseUrl;
 
   let navigate = useNavigate();
-
 
   let countryStyle = {
     fillColor: "black",
@@ -117,6 +117,8 @@ const MyMap = (props) => {
       <div>
         <Header onLogout={logout}/>
         <main className="map">
+          <div style={ {display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gridGap: 20} }>
+           <div>
           <MapContainer
             style={{ height: "45vh", width: "90vh" }}
             zoom={3}
@@ -136,8 +138,13 @@ const MyMap = (props) => {
               onEachFeature={notVisitedCountriesStyle}
             ></GeoJSON>
           </MapContainer>
+          </div>
+          <div style={ {height: "600px"}} >
+            <TripList baseUrl={props.baseUrl} logged={props.logged}/>
+          </div>
+          </div>
         </main>
-      </div>
+        </div>
     );
   }
 };

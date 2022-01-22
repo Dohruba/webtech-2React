@@ -20,7 +20,7 @@ const Trip = ({
   useEffect(()=>{
     let mounted = true;
     if(mounted){
-      if(path==='/addTrip'){
+      if(path==='/addTrip' || path==='/map'){
         setPathChanged(false);
       }else{
         setPathChanged(true);

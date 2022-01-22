@@ -13,13 +13,13 @@ body{
 }
 
 .trip-details{
-    width: auto;
-    padding-top: 50px; 
+    width: 300px;
     border: grey;
     border-style: solid;
-    border-width: 1px;
+    border-width: 0.5px;
     padding: 10px;
     font-size: 17px;
+    margin: 10px;
 }
 
 .test{
@@ -35,11 +35,22 @@ body{
 }
 
 .trip-list {
-    padding-top: 200px;
+    padding-top: 15%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    overflow-y: scroll;
+    height: 400px;
+}
+
+.trip-list-map {
+    overflow-y: scroll;
+    height: 600px;
+}
+
+.trip-list-addtrip {
+    overflow-y: scroll;
+    height: 400px;
 }
 
 .container{
