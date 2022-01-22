@@ -18,20 +18,17 @@ const App = () => {
   const [loggedIn, setLoggedIn] = useState();
   const loginTriedHandler = (result) => {
     setLoggedIn(result);
-    console.log("Login: " + result);
+    // console.log("Login: " + result);
   };
 
-  const loadGeoHandler = (data) => {
-    console.log(data);
-    if (changeDone) {
-      console.log("SAME");
-      changeDone = false;
-    }
-  };
-  let changeDone = false;
-  const onChangeDone = () => {
-    changeDone = true;
-  };
+  const logoutHandler = async () =>{
+    setLoggedIn(false);
+    const response = await fetch(`${baseUrl}/logout`, {
+      method: "POST",
+      credentials: "include",
+    });
+    // console.log(response);
+  }
 
   return (
     <BrowserRouter>
@@ -39,26 +36,26 @@ const App = () => {
         <Route
           exact
           path="/"
-          element={<LoginForm baseUrl={baseUrl} onTryLogin={loginTriedHandler} />}
+          element={<LoginForm logged={loggedIn} baseUrl={baseUrl} onTryLogin={loginTriedHandler} />}
         />
         <Route exact path="/map" logged={loggedIn} element={<MyMap baseUrl={baseUrl}/>} />
         <Route
           exact
           path="/addTrip"
           logged={loggedIn}
-          element={<TripAdder baseUrl={baseUrl} />}
+          element={<TripAdder baseUrl={baseUrl} logged={loggedIn} onLogout={logoutHandler}/>}
         />
         <Route
           exact
           path="/editTrip"
           logged={loggedIn}
-          element={<TripList baseUrl={baseUrl}/>}
+          element={<TripList baseUrl={baseUrl} logged={loggedIn} onLogout={logoutHandler}/>}
         />
         <Route
           exact
           path="/editTrip/:id"
           logged={loggedIn}
-          element={<TripEditor baseUrl={baseUrl}/>}
+          element={<TripEditor baseUrl={baseUrl} logged={loggedIn} onLogout={logoutHandler}/>}
         />
       </Routes>
       <Footer />
