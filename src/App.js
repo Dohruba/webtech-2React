@@ -11,54 +11,54 @@ import Footer from "./components/structure/Footer";
 import mapData from "./data/mapData.json";
 
 const App = () => {
-
   //connect Frontend to Backend
   //const baseUrl = "https://travelsitebackend.herokuapp.com";
   const baseUrl = "http://localhost:5000";
   
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState();
   const loginTriedHandler = (result) => {
     setLoggedIn(result);
     console.log("Login: " + result);
   };
-  const logoutHandler = async () =>{
-    setLoggedIn(false);
-    const response = await fetch(`${BASE_URL}/logout`, {
-      method: "POST",
-      credentials: "include",
-    });
-    console.log(response);
-  }
 
-  console.log(loggedIn);
+  const loadGeoHandler = (data) => {
+    console.log(data);
+    if (changeDone) {
+      console.log("SAME");
+      changeDone = false;
+    }
+  };
+  let changeDone = false;
+  const onChangeDone = () => {
+    changeDone = true;
+  };
+
   return (
     <BrowserRouter>
       <Routes>
         <Route
           exact
           path="/"
-          element={<LoginForm 
-            onTryLogin={loginTriedHandler}
-           logged={loggedIn}/>}
+          element={<LoginForm baseUrl={baseUrl} onTryLogin={loginTriedHandler} />}
         />
-        <Route exact path="/map" logged={loggedIn} element={<MyMap logged={loggedIn}/>} />
+        <Route exact path="/map" logged={loggedIn} element={<MyMap baseUrl={baseUrl}/>} />
         <Route
           exact
           path="/addTrip"
           logged={loggedIn}
-          element={<TripAdder baseUrl={baseUrl} logged={loggedIn} onLogout={logoutHandler}/>}
+          element={<TripAdder baseUrl={baseUrl} />}
         />
         <Route
           exact
           path="/editTrip"
           logged={loggedIn}
-          element={<TripList logged={loggedIn} onLogout={logoutHandler}/>}
+          element={<TripList baseUrl={baseUrl}/>}
         />
         <Route
           exact
           path="/editTrip/:id"
           logged={loggedIn}
-          element={<TripEditor logged={loggedIn} onLogout={logoutHandler}/>}
+          element={<TripEditor baseUrl={baseUrl}/>}
         />
       </Routes>
       <Footer />
