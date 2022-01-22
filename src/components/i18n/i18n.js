@@ -19,6 +19,17 @@ i18n
     resources: {
       en: {
         translation: {
+          description:{
+            tripname: 'Tripname: '
+          }
+          // here we will place our translations...
+        }
+      },
+      de: {
+        translation: {
+          description:{
+            tripname: 'Reisename: '
+          }
           // here we will place our translations...
         }
       }

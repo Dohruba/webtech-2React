@@ -15,7 +15,7 @@ const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const loginTriedHandler = (result) => {
     setLoggedIn(result);
-    console.log("Login: " + result);
+    // console.log("Login: " + result);
   };
   const logoutHandler = async () =>{
     setLoggedIn(false);
@@ -26,7 +26,6 @@ const App = () => {
     console.log(response);
   }
 
-  console.log(loggedIn);
   return (
     <BrowserRouter>
       <Routes>

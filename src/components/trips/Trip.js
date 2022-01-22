@@ -4,6 +4,8 @@ import '../styles.css';
 import { useNavigate } from 'react-router';
 import Moment from 'moment';
 
+import { useTranslation, Trans } from 'react-i18next';
+
 const Trip = ({
   trip_id,
   name,
@@ -13,6 +15,8 @@ const Trip = ({
   handleRemoveTrip
 }) => {
   let navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const path = window.location.pathname;
   const [pathChanged, setPathChanged] = useState('');
@@ -37,7 +41,10 @@ const Trip = ({
     <Card>
       <Card.Body>
         <div className="trip-details">
-          <div>Reisename: {name}</div>
+          <div>
+            {t('description.tripname')}
+            {name}
+            </div>
           <div>Startdatum: {formatDate(new Date(start))} </div>
           <div>Enddatum: {formatDate(new Date(end))} </div>
           <div>Reiseziel: {country}</div>
