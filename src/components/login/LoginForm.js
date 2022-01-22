@@ -30,17 +30,16 @@ const LoginForm = (props) => {
       email: mail,
       password: password,
     };
-    const tryLogin = async () => {
-      const response = await fetch(`${BASE_URL}/login`, {
-        method: "POST",
-        mode: "cors",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(tableData),
-      })
-        .then((response) => response.json())
+
+    const requestOptions = {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(tableData),
+    };
+    fetch(`${BASE_URL}/login`, requestOptions)
+      .then((response) => response.json())
         .then((res) => {
           if (res.status === "200") {
             props.onTryLogin(true);
@@ -51,8 +50,6 @@ const LoginForm = (props) => {
             return false;
           }
         });
-    };
-    tryLogin();
   };
 
   return (
