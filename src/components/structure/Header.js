@@ -12,7 +12,7 @@ const Header = (props) => {
         <header className="after-login">
             <div className="menu-container">
                 <img className="logo" src={image}/>
-                <h2><a href="map.html">Deine Reisekarte ins Nirwana</a></h2>
+                <h2><NavLink to={'/map'} >Deine Reisekarte ins Nirwana</NavLink></h2>
                 <nav className="menu">
                     <ul>
                         <li><NavLink to={'/map'} >Karte</NavLink></li>
