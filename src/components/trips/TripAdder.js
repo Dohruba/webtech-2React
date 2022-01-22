@@ -7,9 +7,7 @@ import "../styles.css";
 import { useNavigate } from "react-router";
 
 function TripAdder(props) {
-  //console.log(props);
-  //connect Frontend to Backend
-  //const BASE_URL = "https://travelsitebackend.herokuapp.com";
+
   const BASE_URL = props.baseUrl;
   let navigate = useNavigate();
 
@@ -48,8 +46,7 @@ function TripAdder(props) {
   return (
     <React.Fragment>
       <Header onLogout={logout}/>
-      <TripList logged={props.logged}/>{" "}
-      {/* add props for removing edit and delete buttons on this list*/}
+      <TripList baseUrl={baseUrl} logged={props.logged}/>{" "}
       <TripForm isEditForm={false} handleOnSubmit={handleOnSubmit} />
     </React.Fragment>
   );
