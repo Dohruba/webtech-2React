@@ -101,7 +101,7 @@ const TripForm = (props) => {
             type="text"
             name="name"
             value={name}
-            placeholder="Reisenamen eingeben"
+            placeholder={t('description.nameinput')}
             onChange={handleInputChange}
           />
         </Form.Group>

@@ -31,7 +31,8 @@ i18n
             dropdownCountry: 'Please select country',
             addAlert: 'Please fill all the fields.',
             loadtext: 'Fetching data...',
-            notrip: 'No scheduled trips.'
+            notrip: 'No scheduled trips.',
+            nameinput: 'Enter tripname'
           },
           loginForm:{
             password: "Password",
@@ -62,7 +63,8 @@ i18n
             dropdownCountry: 'Bitte Land wählen',
             addAlert: 'Bitte alle Felder ausfüllen.',
             loadtext: 'Warten bis Daten geladen sind...',
-            notrip: 'Keine geplanten Reisen.'
+            notrip: 'Keine geplanten Reisen.',
+            nameinput: 'Reisenamen eingeben'
           }
           ,
           loginForm:{
