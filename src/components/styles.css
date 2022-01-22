@@ -3,6 +3,11 @@ body{
     
 }
 
+.loading-screen{
+    padding: 50px;
+    text-align: center;
+}
+
 .input-control{
     font-size: 15px;
 }
@@ -115,6 +120,7 @@ aside{
 
 footer {
     grid-area: footer;
+    text-align: center;
     position:fixed;
     bottom: 0%;
     left:0%;

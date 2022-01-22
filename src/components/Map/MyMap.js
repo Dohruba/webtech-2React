@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router';
 const MyMap = (props) => {
 
   if(props.location)console.log(props.location.some);
-  console.log(props);
+  // console.log(props);
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -20,7 +20,7 @@ const MyMap = (props) => {
   let filteredVisited;
   let filteredGeo;
   let visitedCountries = [];
-  //const BASE_URL = "https://travelsitebackend.herokuapp.com";
+
   const BASE_URL = props.baseUrl;
 
   let navigate = useNavigate();
@@ -142,6 +142,3 @@ const MyMap = (props) => {
   }
 };
 export default MyMap;
-
-/*
- */

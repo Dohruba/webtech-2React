@@ -8,10 +8,10 @@ import TripAdder from "./components/trips/TripAdder";
 import TripList from "./components/trips/TripList";
 import MyMap from "./components/Map/MyMap";
 import Footer from "./components/structure/Footer";
-import mapData from "./data/mapData.json";
 
 const App = () => {
-  const baseUrl = "http://localhost:5000";
+  const baseUrl = "https://travelsitebackend.herokuapp.com";
+  // const baseUrl = "http://localhost:5000";
   const [loggedIn, setLoggedIn] = useState(false);
   const loginTriedHandler = (result) => {
     setLoggedIn(result);
