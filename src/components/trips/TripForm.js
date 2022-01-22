@@ -47,7 +47,7 @@ const TripForm = (props) => {
 
     const allFieldsFilled = values.every((field) => {
       const value = `${field}`.trim();
-      return value !== '' && value !== '0' && value !== "Bitte Land wählen";
+      return value !== '' && value !== '0' && value !== "{t('description.dropdownCountry')}" ;
     });
 
 
@@ -69,6 +69,7 @@ const TripForm = (props) => {
 
     } else {
       errorMsg = 'Bitte alle Felder ausfüllen.';
+ //{t('description.addAlert')}
     }
     setErrorMsg(errorMsg);
   };
@@ -91,7 +92,7 @@ const TripForm = (props) => {
   }
   return (
     <div className="main-form">
-      {errorMsg && <p className="errorMsg">{errorMsg}</p>}
+      {errorMsg && <p className="errorMsg">{t('description.addAlert')}</p>}
       <Form onSubmit={handleOnSubmit}>
         <Form.Group controlId="name">
           <Form.Label> {t('description.tripname')} </Form.Label>
