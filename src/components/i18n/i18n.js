@@ -29,8 +29,20 @@ i18n
             delBtn: 'Delete',
             submitBtn: 'Submit',
             dropdownCountry: 'Please select country'
-          }
-          // here we will place our translations...
+          },
+          loginForm:{
+            password: "Password",
+            button: "Login",
+            welcome1: "Login and manage your trips",
+            welcome2: "simply with your own travel map."
+          },
+          header:{
+            title: "Your travelmap to Nirvana",
+            button1: "Map",
+            button2: "Add trip",
+            button3: "Edit trip",
+            button4: "Logout"
+          },
         }
       },
       de: {
@@ -45,6 +57,20 @@ i18n
             delBtn: 'Löschen',
             submitBtn: 'Änderungen übernehmen',
             dropdownCountry: 'Bitte Land wählen'
+          }
+          ,
+          loginForm:{
+            password: "Passwort",
+            button: "Einloggen",
+            welcome1: "Jetzt einloggen und deine Reisen",
+            welcome2: "ganz einfach über deine individuelle Reisekarte verwalten."
+          },
+          header:{
+            title: "Deine Reisekarte ins Nirwana",
+            button1: "Karte",
+            button2: "Reise hinzufügen",
+            button3: "Reise bearbeiten",
+            button4: "Logout"
           }
           // here we will place our translations...
         }

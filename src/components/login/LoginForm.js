@@ -3,11 +3,15 @@ import "../styles.css";
 import { useNavigate } from 'react-router';
 import logo from '../../images/globe.png';
 
+import { useTranslation, Trans } from 'react-i18next';
+
 const LoginForm = (props) => {
   let navigate = useNavigate();
   //connect Frontend to Backend
   //const BASE_URL = "https://travelsitebackend.herokuapp.com";
   
+  const { t } = useTranslation();
+
   const BASE_URL = props.baseUrl;
   const [enteredMail, setEnteredMail] = useState("");
   const [enteredPass, setEnteredPass] = useState("");
@@ -60,27 +64,25 @@ const LoginForm = (props) => {
       <header className="index-header">
             <div className="header-container-index">
                 <img className="logo" src={logo}/>
-                <h1 className="index-title">Deine Reisekarte ins Nirwana</h1>
+                <h1 className="index-title">{t('header.title')}</h1>
             </div>
         </header>
         <main>
             <h3>
-                Jetzt einloggen 
-                und deine Reisen <br/>
-                ganz einfach
-                über deine individuelle Reisekarte 
-                verwalten.
+              {t('loginForm.welcome1')}
+              <br/>
+              {t('loginForm.welcome2')}
             </h3>
     <div className="login" >
       <label htmlFor="email">E-Mail</label>
       <input type="email" id="email" value={enteredMail} onChange={mailChangeHandler} />
       <br />
-      <label htmlFor="password">Passwort</label>
+      <label htmlFor="password">{t('loginForm.password')}</label>
       <input type="password" id="pw" onChange={passChangeHandler} />
       <div>
         <button type="submit" className="loginBtn" value={enteredPass} onClick={clickHandler}>
           {" "}
-          Jetzt einloggen
+          {t('loginForm.button')}
         </button>
       </div>
     </div>
