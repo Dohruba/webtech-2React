@@ -3,7 +3,7 @@ import "../styles.css";
 import { useNavigate } from 'react-router';
 import logo from '../../images/globe.png';
 
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation} from 'react-i18next';
 
 const LoginForm = (props) => {
   let navigate = useNavigate();
@@ -15,7 +15,6 @@ const LoginForm = (props) => {
   const BASE_URL = props.baseUrl;
   const [enteredMail, setEnteredMail] = useState("");
   const [enteredPass, setEnteredPass] = useState("");
-  const [logged, setLogged] = useState(props.logged);
 
 
   const mailChangeHandler = (event) => {
@@ -45,12 +44,10 @@ const LoginForm = (props) => {
         .then((response) => response.json())
         .then((res) => {
           if (res.status === "200") {
-            setLogged(true);
             props.onTryLogin(true);
             navigate('/map');
             return true;
           } else {
-            setLogged(false);
             props.onTryLogin(false);
             return false;
           }
@@ -63,7 +60,7 @@ const LoginForm = (props) => {
     <div className="container">
       <header className="index-header">
             <div className="header-container-index">
-                <img className="logo" src={logo}/>
+                <img className="logo" alt="Logo" src={logo}/>
                 <h1 className="index-title">{t('header.title')}</h1>
             </div>
         </header>

@@ -2,7 +2,7 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import '../styles.css';
 import image from '../../images/globe.png'
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation} from 'react-i18next';
 
 const Header = (props) => {
 
@@ -13,7 +13,7 @@ const Header = (props) => {
     return (
         <header className="after-login">
             <div className="menu-container">
-                <img className="logo" src={image}/>
+                <img className="logo" alt='Logo' src={image}/>
                 <h2><NavLink to={'/map'} >{t('header.title')}</NavLink></h2>
                 <nav className="menu">
                     <ul>
