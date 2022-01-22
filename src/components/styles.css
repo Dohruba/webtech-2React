@@ -19,7 +19,6 @@ body{
     border-width: 0.5px;
     padding: 10px;
     font-size: 17px;
-    margin: 10px;
 }
 
 .test{
@@ -34,13 +33,16 @@ body{
   text-align: center;
 }
 
+.trip-container{
+    padding-top: 120px;
+}
+
 .trip-list {
-    padding-top: 15%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     overflow-y: scroll;
-    height: 400px;
+    height: 200px;
 }
 
 .trip-list-map {
@@ -244,6 +246,14 @@ a{
 
 /*responsive Part*/
 @media(max-width: 790px){
+
+    .trip-list {
+        padding-top: 10px;
+    }
+
+    .trip-container{
+        padding-top: 200px;
+    }
 
     .map{
         padding-top: 200px;

@@ -71,6 +71,7 @@ const TripList = (props) => {
     return (
       <React.Fragment>
         <Header onLogout={logout}/>
+        <div className="trip-container">
         <div className="trip-list">
           {!_.isEmpty(trips) ? (
             trips.map((trip) => (
@@ -83,6 +84,7 @@ const TripList = (props) => {
           ) : (
             <p className="message">Keine geplanten Reisen. </p>
           )}
+        </div>
         </div>
       </React.Fragment>
     );

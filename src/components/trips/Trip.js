@@ -34,7 +34,7 @@ const Trip = ({
   }
 
   return (
-    <Card className="trip">
+    <Card>
       <Card.Body>
         <div className="trip-details">
           <div>Reisename: {name}</div>
