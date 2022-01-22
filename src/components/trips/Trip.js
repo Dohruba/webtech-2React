@@ -45,17 +45,17 @@ const Trip = ({
             {t('description.tripname')}
             {name}
             </div>
-          <div>Startdatum: {formatDate(new Date(start))} </div>
-          <div>Enddatum: {formatDate(new Date(end))} </div>
-          <div>Reiseziel: {country}</div>
+          <div>{t('description.start')} {formatDate(new Date(start))} </div>
+          <div>{t('description.end')} {formatDate(new Date(end))} </div>
+          <div>{t('description.country')}  {country}</div>
         </div>
         {pathChanged
         ? <div>
         <Button variant="primary" onClick={() => navigate(`/editTrip/${trip_id}`)}>
-          Bearbeiten
+        {t('description.editBtn')}
           </Button>
         <Button variant="danger" onClick={() => handleRemoveTrip(trip_id)}>
-          Löschen
+        {t('description.delBtn')}
         </Button>
         </div>
         : null}

@@ -20,7 +20,15 @@ i18n
       en: {
         translation: {
           description:{
-            tripname: 'Tripname: '
+            tripname: 'Tripname: ',
+            start: 'Start: ',
+            end: 'End: ',
+            country: 'Country: ',
+            editBtn: 'Edit',
+            addBtn: 'Add',
+            delBtn: 'Delete',
+            submitBtn: 'Submit',
+            dropdownCountry: 'Please select country'
           }
           // here we will place our translations...
         }
@@ -28,7 +36,15 @@ i18n
       de: {
         translation: {
           description:{
-            tripname: 'Reisename: '
+            tripname: 'Reisename: ',
+            start: 'Startdatum: ',
+            end: 'Enddatum: ',
+            country: 'Reiseziel: ',
+            editBtn: 'Bearbeiten',
+            addBtn: 'Hinzufügen',
+            delBtn: 'Löschen',
+            submitBtn: 'Änderungen übernehmen',
+            dropdownCountry: 'Bitte Land wählen'
           }
           // here we will place our translations...
         }
