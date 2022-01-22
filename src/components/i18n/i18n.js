@@ -28,7 +28,8 @@ i18n
             addBtn: 'Add',
             delBtn: 'Delete',
             submitBtn: 'Submit',
-            dropdownCountry: 'Please select country'
+            dropdownCountry: 'Please select country',
+            addAlert: 'Please fill all the fields.'
           },
           loginForm:{
             password: "Password",
@@ -56,7 +57,8 @@ i18n
             addBtn: 'Hinzufügen',
             delBtn: 'Löschen',
             submitBtn: 'Änderungen übernehmen',
-            dropdownCountry: 'Bitte Land wählen'
+            dropdownCountry: 'Bitte Land wählen',
+            addAlert: 'Bitte alle Felder ausfüllen.'
           }
           ,
           loginForm:{
