@@ -42,7 +42,7 @@ const TripList = (props) => {
     }
     getTrips();
     return () => (mounted = false); //cleanup function
-  }, [trips]);
+  }, [props]);
 
   const handleRemoveTrip = (id) => {
     const requestOptions = {
