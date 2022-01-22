@@ -77,12 +77,10 @@ body{
 .container-after-login-map {
     text-align: center;
     display: grid;
-    grid-template-rows: 120px 500px 1fr;
+    grid-template-rows: 500px;
     grid-template-columns: 75% 1fr;
     grid-template-areas: 
-      "header header"
       "main aside"
-      "footer footer"
 }
 
 .container-after-login-triplist {

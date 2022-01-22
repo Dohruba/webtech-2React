@@ -117,7 +117,7 @@ const MyMap = (props) => {
       <div>
         <Header onLogout={logout}/>
         <main>
-          <div style={ {display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gridGap: 20} }>
+          <div style={ {display: "grid", gridTemplateColumns: "repeat(75%, 1fr)", gridGap: 20} }>
           <div className="map">
           <MapContainer
             style={{ height: "45vh", width: "90vh" }}
