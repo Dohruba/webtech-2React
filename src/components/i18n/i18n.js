@@ -60,12 +60,9 @@ i18n
             delBtn: 'Löschen',
             submitBtn: 'Änderungen übernehmen',
             dropdownCountry: 'Bitte Land wählen',
-<<<<<<< HEAD
-            addAlert: 'Bitte alle Felder ausfüllen.'
-=======
+            addAlert: 'Bitte alle Felder ausfüllen.',
             loadtext: 'Warten bis Daten geladen sind...',
             notrip: 'Keine geplanten Reisen.'
->>>>>>> 6a096d84d769799409112e0118815c2b2d81603e
           }
           ,
           loginForm:{
