@@ -67,7 +67,7 @@ const MyMap = (props) => {
           setError(error);
         }
       );
-  },[BASE_URL, navigate, path, props.logged]);
+  },[BASE_URL, navigate, props.logged]);
 
   visitedCountries = fillVisitedCountries(trips);
 
