@@ -60,7 +60,7 @@ const TripList = (props) => {
       }getTrips();
     }, 2000);
     return () => (mounted = false); //cleanup function
-  }, [trips]);
+  }, [trips, BASE_URL, navigate, path, props.logged]);
 
   const handleRemoveTrip = (id) => {
     const requestOptions = {
