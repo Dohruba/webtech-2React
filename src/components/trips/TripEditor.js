@@ -20,11 +20,10 @@ function TripEditor(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [trips, setTrips] = useState([]);
 
-  let navigate = useNavigate();
   const { id } = useParams(); //gets id from current route
 
   const tripToEdit = trips.find((trip) => trip.trip_id === id);
-  console.log(tripToEdit);
+  // console.log(tripToEdit);
 
   useEffect(() => {
     if (!props.logged) {

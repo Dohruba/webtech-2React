@@ -5,12 +5,10 @@ import Header from "../structure/Header";
 import "../styles.css";
 import { useNavigate } from "react-router";
 
-const TripList = ({baseUrl}) => {
-
-  const BASE_URL = baseUrl;
-
-const BASE_URL = "http://localhost:5000";
 const TripList = (props) => {
+
+  const BASE_URL = props.baseUrl;
+
   let navigate = useNavigate();
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
