@@ -3,11 +3,11 @@ import TripList from "../trips/TripList";
 import "../styles.css";
 import mapData from "../../data/mapData.json";
 import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
+import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./MyMap.css";
 import { useNavigate } from 'react-router';
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation} from 'react-i18next';
 
 const MyMap = (props) => {
   const { t } = useTranslation();
@@ -19,7 +19,6 @@ const MyMap = (props) => {
   const [trips, setTrips] = useState([]);
   let mapGeojson = mapData;
   let filteredVisited;
-  let filteredGeo;
   let visitedCountries = [];
 
   const BASE_URL = props.baseUrl;
@@ -68,7 +67,7 @@ const MyMap = (props) => {
           setError(error);
         }
       );
-  });
+  },[BASE_URL, navigate, path, props.logged]);
 
   visitedCountries = fillVisitedCountries(trips);
 
