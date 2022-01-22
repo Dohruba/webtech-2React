@@ -139,11 +139,11 @@ const MyMap = (props) => {
             ></GeoJSON>
           </MapContainer>
           </div>
-          <div style={ {height: "600px"}} >
+          <div>
             <TripList baseUrl={props.baseUrl} logged={props.logged}/>
           </div>
           </div>
-        </main>
+          </main>
         </div>
     );
   }

@@ -70,7 +70,10 @@ const TripList = (props) => {
   } else {
     return (
       <React.Fragment>
+        <header>
         <Header onLogout={logout}/>
+        </header>
+        <main>
         <div className="trip-container">
         <div className="trip-list">
           {!_.isEmpty(trips) ? (
@@ -86,6 +89,7 @@ const TripList = (props) => {
           )}
         </div>
         </div>
+        </main>
       </React.Fragment>
     );
   }

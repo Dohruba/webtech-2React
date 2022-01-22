@@ -34,7 +34,8 @@ body{
 }
 
 .trip-container{
-    padding-top: 120px;
+    padding-top: 100px;
+    height: 450px;
 }
 
 .trip-list {
@@ -42,7 +43,6 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     overflow-y: scroll;
-    height: 200px;
 }
 
 .trip-list-map {
@@ -248,16 +248,16 @@ a{
 @media(max-width: 790px){
 
     .trip-list {
-        padding-top: 10px;
-    }
-
-    .trip-container{
-        padding-top: 200px;
+        padding-top: 50px;
     }
 
     .map{
         padding-top: 200px;
-        max-width: 100%;
+        height: 600px;
+    }
+
+    .trip-container{
+        padding-top: 200px;
     }
 
     .container-after-login-map {
