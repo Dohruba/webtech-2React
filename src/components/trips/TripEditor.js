@@ -45,7 +45,7 @@ function TripEditor(props) {
     }
     getTrips();
     return () => (mounted = false); //cleanup function
-  }, []);
+  }, [navigate, props.logged]);
 
   const handleOnSubmit = (trip) => {
     const data = {

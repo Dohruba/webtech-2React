@@ -19,7 +19,7 @@ const TripForm = (props) => {
     end: '',
     country: ''});
 
-  const updateTrip = () => {
+  const updateTrip = React.useCallback( () => {
     const tripToEdit = {
     name: props.trip ? props.trip.name : '',
     start: props.trip ? props.trip.start : '',
@@ -28,14 +28,14 @@ const TripForm = (props) => {
     }
     // console.log(props);
     setTrip(tripToEdit);
-  }
+  },[props.trip]);
 
   useEffect(()=>{
     let mounted = true;
     if(mounted){
     updateTrip();}
     return() => mounted = false;
-  },[props]);
+  },[props, updateTrip]);
 
   const [errorMsg, setErrorMsg] = useState('');
   const { name, start, end, country } = trip;

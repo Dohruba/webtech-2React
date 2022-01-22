@@ -69,7 +69,7 @@ const MyMap = (props) => {
           setError(error);
         }
       );
-  }, []);
+  });
 
   visitedCountries = fillVisitedCountries(trips);
 
