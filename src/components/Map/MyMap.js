@@ -116,9 +116,9 @@ const MyMap = (props) => {
     return (
       <div>
         <Header onLogout={logout}/>
-        <main className="map">
+        <main>
           <div style={ {display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gridGap: 20} }>
-           <div>
+          <div className="map">
           <MapContainer
             style={{ height: "45vh", width: "90vh" }}
             zoom={3}
@@ -139,9 +139,9 @@ const MyMap = (props) => {
             ></GeoJSON>
           </MapContainer>
           </div>
-          <div>
-            <TripList baseUrl={props.baseUrl} logged={props.logged}/>
-          </div>
+            <div className="trip-list-map">
+              <TripList baseUrl={props.baseUrl} logged={props.logged}/>
+            </div>
           </div>
           </main>
         </div>

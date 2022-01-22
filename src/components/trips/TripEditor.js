@@ -22,7 +22,6 @@ function TripEditor(props) {
   const { id } = useParams(); //gets id from current route
 
   const tripToEdit = trips.find((trip) => trip.trip_id === id);
-  console.log(tripToEdit);
 
   useEffect(() => {
     if (!props.logged) {
@@ -71,8 +70,8 @@ function TripEditor(props) {
     };
     fetch(`${BASE_URL}/trips/` + id, requestOptions)
       .then((response) => response.json())
-      .then((res) => res.status == "200");
-    // navigate('/editTrip');
+      .then((res) => res.status == "200")
+      .then(navigate('/editTrip'));
   };
 
   const logout = () => {

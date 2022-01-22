@@ -4,7 +4,7 @@ body{
 }
 
 .loading-screen{
-    padding: 50px;
+    padding: 100px;
     text-align: center;
 }
 
@@ -33,10 +33,6 @@ body{
   text-align: center;
 }
 
-.trip-container{
-    padding-top: 100px;
-    height: 450px;
-}
 
 .trip-list {
     display: flex;
@@ -48,11 +44,16 @@ body{
 .trip-list-map {
     overflow-y: scroll;
     height: 600px;
+    padding-top: 100px;
 }
 
 .trip-list-addtrip {
     overflow-y: scroll;
-    height: 400px;
+    height: 430px;
+}
+
+.trip-container{
+    padding-top: 100px;
 }
 
 .container{
@@ -125,6 +126,7 @@ main {
     padding-left: 40px;
     padding-right: 40px;
     padding-bottom: 5px;
+    background-color: white;
 }
 
 aside{
@@ -241,7 +243,7 @@ a{
 }
 
 .map{
-    padding-top: 150px;
+    padding-top: 100px;
 }
 
 /*responsive Part*/
