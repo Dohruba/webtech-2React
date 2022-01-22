@@ -4,8 +4,11 @@ import Trip from "./Trip";
 import Header from "../structure/Header";
 import "../styles.css";
 import { useNavigate } from "react-router";
+import { useTranslation, Trans } from 'react-i18next';
 
 const TripList = (props) => {
+
+  const { t } = useTranslation();
   
   const BASE_URL = props.baseUrl;
   

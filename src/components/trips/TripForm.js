@@ -5,7 +5,11 @@ import '../styles.css';
 import Moment from 'moment';
 import DropdownCountries from './DropdownCountries';
 
+import { useTranslation, Trans } from 'react-i18next';
+
 const TripForm = (props) => {
+
+  const { t } = useTranslation();
 
   var isEditForm = props.isEditForm;
 
@@ -83,14 +87,14 @@ const TripForm = (props) => {
 
 
   if(trip.country.length == 0){
-    trip.country = "Bitte Land wählen";
+    trip.country = "{t('description.dropdownCountry')}";
   }
   return (
     <div className="main-form">
       {errorMsg && <p className="errorMsg">{errorMsg}</p>}
       <Form onSubmit={handleOnSubmit}>
         <Form.Group controlId="name">
-          <Form.Label>Reisename: </Form.Label>
+          <Form.Label> {t('description.tripname')} </Form.Label>
           <Form.Control
             className="input-control"
             type="text"
@@ -101,7 +105,7 @@ const TripForm = (props) => {
           />
         </Form.Group>
         <Form.Group controlId="start">
-          <Form.Label>Startdatum: </Form.Label>
+          <Form.Label> {t('description.start')} </Form.Label>
           <Form.Control
             className="input-control"
             type="date"
@@ -112,7 +116,7 @@ const TripForm = (props) => {
           />
         </Form.Group>
         <Form.Group controlId="end">
-          <Form.Label>Enddatum: </Form.Label>
+          <Form.Label> {t('description.end')} </Form.Label>
           <Form.Control
             className="input-control"
             type="date"
@@ -128,9 +132,9 @@ const TripForm = (props) => {
         </Form.Group>
         {isEditForm 
         ? <Button variant="primary" type="submit" className="submit-btn">
-        Änderungen speichern </Button>
+         {t('description.submitBtn')} </Button>
         : <Button variant="primary" type="submit" className="submit-btn">
-        Hinzufügen
+        {t('description.addBtn')}
         </Button>}
         
       </Form>

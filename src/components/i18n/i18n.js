@@ -20,7 +20,15 @@ i18n
       en: {
         translation: {
           description:{
-            tripname: 'Tripname: '
+            tripname: 'Tripname: ',
+            start: 'Start: ',
+            end: 'End: ',
+            country: 'Country: ',
+            editBtn: 'Edit',
+            addBtn: 'Add',
+            delBtn: 'Delete',
+            submitBtn: 'Submit',
+            dropdownCountry: 'Please select country'
           },
           loginForm:{
             password: "Password",
@@ -35,13 +43,20 @@ i18n
             button3: "Edit trip",
             button4: "Logout"
           },
-
         }
       },
       de: {
         translation: {
           description:{
-            tripname: 'Reisename: '
+            tripname: 'Reisename: ',
+            start: 'Startdatum: ',
+            end: 'Enddatum: ',
+            country: 'Reiseziel: ',
+            editBtn: 'Bearbeiten',
+            addBtn: 'Hinzufügen',
+            delBtn: 'Löschen',
+            submitBtn: 'Änderungen übernehmen',
+            dropdownCountry: 'Bitte Land wählen'
           }
           ,
           loginForm:{
