@@ -8,6 +8,7 @@ import { useNavigate } from "react-router";
 
 function TripAdder(props){
 
+  
   const BASE_URL = props.baseUrl;
 
   let navigate = useNavigate();

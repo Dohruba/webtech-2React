@@ -3,9 +3,11 @@ import "../styles.css";
 import { useNavigate } from 'react-router';
 import logo from '../../images/globe.png';
 
-const LoginForm = ({props, baseUrl}) => {
+const LoginForm = (props) => {
 
-  const BASE_URL = baseUrl;
+  const BASE_URL = props.baseUrl;
+  console.log(props);
+  console.log(props.baseURL)
 
   let navigate = useNavigate();
   const [enteredMail, setEnteredMail] = useState("");
@@ -28,7 +30,8 @@ const LoginForm = ({props, baseUrl}) => {
       password: password,
     };
     const tryLogin = async () => {
-      const response = await fetch(`${BASE_URL}/login`, {
+      console.log(props.baseURL);
+      const response = await fetch(`${props.baseURL}/login`, {
         method: "POST",
         mode: "cors",
         credentials: "include",

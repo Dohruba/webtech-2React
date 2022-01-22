@@ -23,7 +23,7 @@ const App = () => {
   };
   const logoutHandler = async () =>{
     setLoggedIn(false);
-    const response = await fetch(`${BASE_URL}/logout`, {
+    const response = await fetch(`${baseUrl}/logout`, {
       method: "POST",
       credentials: "include",
     });
@@ -39,7 +39,9 @@ const App = () => {
           path="/"
           element={<LoginForm 
             onTryLogin={loginTriedHandler}
-           logged={loggedIn}/>}
+           logged={loggedIn}
+           baseURL = {baseUrl}
+           />}
         />
         <Route exact path="/map" logged={loggedIn} element={<MyMap logged={loggedIn}/>} />
         <Route
@@ -52,13 +54,13 @@ const App = () => {
           exact
           path="/editTrip"
           logged={loggedIn}
-          element={<TripList logged={loggedIn} onLogout={logoutHandler}/>}
+          element={<TripList baseUrl={baseUrl} logged={loggedIn} onLogout={logoutHandler}/>}
         />
         <Route
           exact
           path="/editTrip/:id"
           logged={loggedIn}
-          element={<TripEditor logged={loggedIn} onLogout={logoutHandler}/>}
+          element={<TripEditor baseUrl={baseUrl} logged={loggedIn} onLogout={logoutHandler}/>}
         />
       </Routes>
       <Footer />
