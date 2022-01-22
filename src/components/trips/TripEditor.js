@@ -21,7 +21,6 @@ function TripEditor(props) {
   const { id } = useParams(); //gets id from current route
 
   const tripToEdit = trips.find((trip) => trip.trip_id === id);
-  console.log(tripToEdit);
 
   useEffect(() => {
     if (!props.logged) {

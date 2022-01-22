@@ -17,6 +17,9 @@ const TripList = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [trips, setTrips] = useState([]);
 
+  const path = window.location.pathname;
+  const [pathChanged, setPathChanged] = useState('');
+
   useEffect(() => {
 
     if (!props.logged) {
@@ -24,6 +27,15 @@ const TripList = (props) => {
     }
 
     let mounted = true;
+
+    if(mounted){
+      if(path==='/map'){
+        setPathChanged(false);
+      }else{
+        setPathChanged(true);
+      }
+    }
+
       setTimeout(() => {
         async function getTrips() {
         fetch(`${BASE_URL}/trips`, {
@@ -51,7 +63,6 @@ const TripList = (props) => {
   }, [trips]);
 
   const handleRemoveTrip = (id) => {
-    // setTrips(trips.filter((trip) => trip.trip_id !== id));
     const requestOptions = {
       method: "DELETE",
       mode: "cors",
@@ -77,6 +88,9 @@ const TripList = (props) => {
         <Header onLogout={logout}/>
         </header>
         <main>
+        {pathChanged
+        ?
+        //for trip-list within editTrip & addTrip
         <div className="trip-container">
         <div className="trip-list">
           {!_.isEmpty(trips) ? (
@@ -92,6 +106,22 @@ const TripList = (props) => {
           )}
         </div>
         </div>
+        : 
+        //to get rid of padding-top within /map
+        <div>
+         {!_.isEmpty(trips) ? (
+            trips.map((trip) => (
+              <Trip
+                key={trip.trip_id}
+                {...trip}
+                handleRemoveTrip={handleRemoveTrip}
+              />
+            ))
+          ) : (
+            <p className="message">{t('description.notrip')}</p>
+          )}
+          </div>
+        }
         </main>
       </React.Fragment>
     );
