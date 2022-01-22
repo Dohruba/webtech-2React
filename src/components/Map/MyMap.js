@@ -7,10 +7,10 @@ import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./MyMap.css";
 import { useNavigate } from 'react-router';
-//import { Grid, Row, Col} from 'react-bootstrap';
+import { useTranslation, Trans } from 'react-i18next';
 
 const MyMap = (props) => {
-
+  const { t } = useTranslation();
   if(props.location)console.log(props.location.some);
   // console.log(props);
 
