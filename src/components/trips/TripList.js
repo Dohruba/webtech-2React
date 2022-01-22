@@ -54,9 +54,7 @@ const TripList = (props) => {
       credentials: "include",
       headers: { "Content-Type": "application/json; charset=UTF-8" },
     };
-    fetch(`${BASE_URL}/trips/` + id, requestOptions).then((res) =>
-      console.log(res)
-    );
+    fetch(`${BASE_URL}/trips/` + id, requestOptions);
   };
   const logout = () => {
     props.onLogout();
