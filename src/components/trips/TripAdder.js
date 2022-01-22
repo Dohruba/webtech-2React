@@ -10,7 +10,7 @@ function TripAdder(props) {
   //console.log(props);
   //connect Frontend to Backend
   //const BASE_URL = "https://travelsitebackend.herokuapp.com";
-  const BASE_URL = "http://localhost:5000";
+  const BASE_URL = props.baseUrl;
   let navigate = useNavigate();
 
   useEffect(() => {

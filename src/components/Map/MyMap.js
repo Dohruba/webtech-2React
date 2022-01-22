@@ -21,7 +21,7 @@ const MyMap = (props) => {
   let filteredGeo;
   let visitedCountries = [];
   //const BASE_URL = "https://travelsitebackend.herokuapp.com";
-  const BASE_URL = "http://localhost:5000";
+  const BASE_URL = props.baseUrl;
 
   let navigate = useNavigate();
 

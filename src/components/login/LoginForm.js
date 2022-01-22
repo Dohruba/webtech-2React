@@ -8,7 +8,7 @@ const LoginForm = (props) => {
   //connect Frontend to Backend
   //const BASE_URL = "https://travelsitebackend.herokuapp.com";
 
-  const BASE_URL = "http://localhost:5000";
+  const BASE_URL = props.baseUrl;
   const [enteredMail, setEnteredMail] = useState("");
   const [enteredPass, setEnteredPass] = useState("");
   const [logged, setLogged] = useState(false);

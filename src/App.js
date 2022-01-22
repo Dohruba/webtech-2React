@@ -35,26 +35,27 @@ const App = () => {
           path="/"
           element={<LoginForm 
             onTryLogin={loginTriedHandler}
-           logged={loggedIn}/>}
+           logged={loggedIn} baseUrl={BASE_URL}/>}
         />
-        <Route exact path="/map" logged={loggedIn} element={<MyMap logged={loggedIn}/>} />
+        <Route exact path="/map" logged={loggedIn} element={<MyMap logged={loggedIn}
+        baseUrl={BASE_URL}/>} />
         <Route
           exact
           path="/addTrip"
           logged={loggedIn}
-          element={<TripAdder logged={loggedIn} onLogout={logoutHandler}/>}
+          element={<TripAdder logged={loggedIn} onLogout={logoutHandler} baseUrl={BASE_URL}/>}
         />
         <Route
           exact
           path="/editTrip"
           logged={loggedIn}
-          element={<TripList logged={loggedIn} onLogout={logoutHandler}/>}
+          element={<TripList logged={loggedIn} onLogout={logoutHandler} baseUrl={BASE_URL}/>}
         />
         <Route
           exact
           path="/editTrip/:id"
           logged={loggedIn}
-          element={<TripEditor logged={loggedIn} onLogout={logoutHandler}/>}
+          element={<TripEditor logged={loggedIn} onLogout={logoutHandler} baseUrl={BASE_URL}/>}
         />
       </Routes>
       <Footer />
