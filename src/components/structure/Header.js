@@ -3,7 +3,11 @@ import {NavLink} from 'react-router-dom';
 import '../styles.css';
 import image from '../../images/globe.png'
 
-const Header = () => {
+const Header = (props) => {
+
+    const logout = () =>{
+        props.onLogout();
+    }
     return (
         <header className="after-login">
             <div className="menu-container">
@@ -11,10 +15,10 @@ const Header = () => {
                 <h2><a href="map.html">Deine Reisekarte ins Nirwana</a></h2>
                 <nav className="menu">
                     <ul>
-                        <li><NavLink to={'/map'}>Karte</NavLink></li>
+                        <li><NavLink to={'/map'} >Karte</NavLink></li>
                         <li><NavLink to={'/addTrip'}>Reise hinzufügen</NavLink></li>
                         <li><NavLink to={'/editTrip'}>Reise bearbeiten</NavLink></li>
-                        <li><NavLink to={'/'}>Logout</NavLink></li>
+                        <li><NavLink to={'/'} onClick={logout} >Logout </NavLink></li>
                     </ul>
                 </nav>
             </div>
@@ -23,3 +27,4 @@ const Header = () => {
 }
 
 export default Header;
+//<li><NavLink to={'/map'}>Karte</NavLink></li>
