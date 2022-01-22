@@ -48,7 +48,6 @@ function TripAdder(props){
     <React.Fragment>
       <Header onLogout={logout}/>
       <TripList logged={props.logged}/>{" "}
-      {/* add props for removing edit and delete buttons on this list*/}
       <TripForm isEditForm={false} handleOnSubmit={handleOnSubmit} />
     </React.Fragment>
   );
