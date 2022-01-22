@@ -111,7 +111,7 @@ const MyMap = (props) => {
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
-    return <div className="loading-screen">Warten bis Daten geladen sind...</div>;
+    return <div className="loading-screen">{t('description.loadtext')}</div>;
   } else {
     return (
       <div>
