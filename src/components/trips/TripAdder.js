@@ -47,7 +47,7 @@ function TripAdder(props){
   return (
     <React.Fragment>
       <Header onLogout={logout}/>
-      <TripList logged={props.logged}/>{" "}
+      <TripList baseUrl={props.baseUrl} logged={props.logged}/>{" "}
       <TripForm isEditForm={false} handleOnSubmit={handleOnSubmit} />
     </React.Fragment>
   );

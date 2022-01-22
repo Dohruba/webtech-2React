@@ -27,4 +27,3 @@ const Header = (props) => {
 }
 
 export default Header;
-//<li><NavLink to={'/map'}>Karte</NavLink></li>

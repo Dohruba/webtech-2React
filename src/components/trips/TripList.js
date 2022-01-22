@@ -45,7 +45,6 @@ const TripList = (props) => {
   }, [trips]);
 
   const handleRemoveTrip = (id) => {
-    // setTrips(trips.filter((trip) => trip.trip_id !== id));
     const requestOptions = {
       method: "DELETE",
       mode: "cors",
