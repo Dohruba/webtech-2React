@@ -2,9 +2,11 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import '../styles.css';
 import image from '../../images/globe.png'
+import { useTranslation, Trans } from 'react-i18next';
 
 const Header = (props) => {
 
+    const { t } = useTranslation();
     const logout = () =>{
         props.onLogout();
     }
@@ -12,13 +14,13 @@ const Header = (props) => {
         <header className="after-login">
             <div className="menu-container">
                 <img className="logo" src={image}/>
-                <h2><NavLink to={'/map'} >Deine Reisekarte ins Nirwana</NavLink></h2>
+                <h2><NavLink to={'/map'} >{t('header.title')}</NavLink></h2>
                 <nav className="menu">
                     <ul>
-                        <li><NavLink to={'/map'} >Karte</NavLink></li>
-                        <li><NavLink to={'/addTrip'}>Reise hinzufügen</NavLink></li>
-                        <li><NavLink to={'/editTrip'}>Reise bearbeiten</NavLink></li>
-                        <li><NavLink to={'/'} onClick={logout} >Logout </NavLink></li>
+                        <li><NavLink to={'/map'} >{t('header.button1')}</NavLink></li>
+                        <li><NavLink to={'/addTrip'}>{t('header.button2')}</NavLink></li>
+                        <li><NavLink to={'/editTrip'}>{t('header.button3')}</NavLink></li>
+                        <li><NavLink to={'/'} onClick={logout} >{t('header.button4')} </NavLink></li>
                     </ul>
                 </nav>
             </div>
