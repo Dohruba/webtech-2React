@@ -111,12 +111,12 @@ const MyMap = (props) => {
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
-    return <div>Warten bis Daten geladen sind...</div>;
+    return <div className="loading-screen">Warten bis Daten geladen sind...</div>;
   } else {
     return (
       <div>
         <Header onLogout={logout}/>
-        <main style={{ paddingTop: "150px" }}>
+        <main className="map">
           <MapContainer
             style={{ height: "45vh", width: "90vh" }}
             zoom={3}

@@ -227,9 +227,18 @@ a{
     font-size: 16px;
 }
 
+.map{
+    padding-top: 150px;
+}
 
 /*responsive Part*/
 @media(max-width: 790px){
+
+    .map{
+        padding-top: 200px;
+        max-width: 100%;
+    }
+
     .container-after-login-map {
       grid-template-columns: 1fr;
       grid-template-rows: 180px auto;
