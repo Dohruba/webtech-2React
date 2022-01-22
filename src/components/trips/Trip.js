@@ -31,7 +31,7 @@ const Trip = ({
       }
     }
     return() => mounted = false;
-  },[])
+  })
 
   function formatDate(date){
     return Moment.utc(date).format("DD.MM.YYYY");

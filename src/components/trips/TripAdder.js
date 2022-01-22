@@ -15,7 +15,7 @@ function TripAdder(props) {
     if (!props.logged) {
       navigate("/");
     }
-  }, []);
+  });
 
   const [trips, setTrips] = useState([]);
   const handleOnSubmit = (trip) => {

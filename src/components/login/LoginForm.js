@@ -16,7 +16,6 @@ const LoginForm = (props) => {
   const [enteredMail, setEnteredMail] = useState("");
   const [enteredPass, setEnteredPass] = useState("");
 
-
   const mailChangeHandler = (event) => {
     setEnteredMail(event.target.value);
   };

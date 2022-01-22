@@ -14,7 +14,6 @@ import React, { useState, useEffect } from "react";
 const BASE_URL = "http://localhost:5000";
 
 function TripEditor(props) {
-  const [isLoaded, setIsLoaded] = useState(false);
   const [trips, setTrips] = useState([]);
 
   let navigate = useNavigate();
@@ -45,7 +44,7 @@ function TripEditor(props) {
     }
     getTrips();
     return () => (mounted = false); //cleanup function
-  }, []);
+  });
 
   const handleOnSubmit = (trip) => {
     const data = {
