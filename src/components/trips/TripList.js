@@ -15,34 +15,37 @@ const TripList = (props) => {
   const [trips, setTrips] = useState([]);
 
   useEffect(() => {
+
     if (!props.logged) {
       navigate("/");
     }
+
     let mounted = true;
-    async function getTrips() {
-      fetch(`${BASE_URL}/trips`, {
-        method: "GET",
-        credentials: "include",
-      })
-        .then((res) => res.json())
-        .then(
-          (result) => {
-            if (mounted) {
-              setIsLoaded(true);
-              setTrips(result);
+      setTimeout(() => {
+        async function getTrips() {
+        fetch(`${BASE_URL}/trips`, {
+          method: "GET",
+          credentials: "include",
+        })
+          .then((res) => res.json())
+          .then(
+            (result) => {
+              if (mounted) {
+                setIsLoaded(true);
+                setTrips(result);
+              }
+            },
+            (error) => {
+              if (mounted) {
+                setIsLoaded(true);
+                setError(error);
+              }
             }
-          },
-          (error) => {
-            if (mounted) {
-              setIsLoaded(true);
-              setError(error);
-            }
-          }
-        );
-    }
-    getTrips();
+          );
+      }getTrips();
+    }, 2000);
     return () => (mounted = false); //cleanup function
-  }, [props]);
+  }, [trips]);
 
   const handleRemoveTrip = (id) => {
     // setTrips(trips.filter((trip) => trip.trip_id !== id));
