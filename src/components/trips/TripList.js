@@ -69,7 +69,7 @@ const TripList = (props) => {
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
-    return <div className="loading-screen">Warten bis Daten geladen sind...</div>;
+    return <div className="loading-screen">{t('description.loadtext')}</div>;
   } else {
     return (
       <React.Fragment>
@@ -88,7 +88,7 @@ const TripList = (props) => {
               />
             ))
           ) : (
-            <p className="message">Keine geplanten Reisen. </p>
+            <p className="message">{t('description.notrip')}</p>
           )}
         </div>
         </div>

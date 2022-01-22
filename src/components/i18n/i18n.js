@@ -28,7 +28,9 @@ i18n
             addBtn: 'Add',
             delBtn: 'Delete',
             submitBtn: 'Submit',
-            dropdownCountry: 'Please select country'
+            dropdownCountry: 'Please select country',
+            loadtext: 'Fetching data...',
+            notrip: 'No scheduled trips.'
           },
           loginForm:{
             password: "Password",
@@ -56,7 +58,9 @@ i18n
             addBtn: 'Hinzufügen',
             delBtn: 'Löschen',
             submitBtn: 'Änderungen übernehmen',
-            dropdownCountry: 'Bitte Land wählen'
+            dropdownCountry: 'Bitte Land wählen',
+            loadtext: 'Warten bis Daten geladen sind...',
+            notrip: 'Keine geplanten Reisen.'
           }
           ,
           loginForm:{
