@@ -5,7 +5,9 @@ import Header from "../structure/Header";
 import "../styles.css";
 import { useNavigate } from "react-router";
 
-// const BASE_URL = "https://travelsitebackend.herokuapp.com";
+const TripList = ({baseUrl}) => {
+
+  const BASE_URL = baseUrl;
 
 const BASE_URL = "http://localhost:5000";
 const TripList = (props) => {

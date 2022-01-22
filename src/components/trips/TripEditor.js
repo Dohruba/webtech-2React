@@ -9,11 +9,13 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router";
 import React, { useState, useEffect } from "react";
 
-//connect Frontend to Backend
-// const BASE_URL = "https://travelsitebackend.herokuapp.com";
-const BASE_URL = "http://localhost:5000";
 
 function TripEditor(props) {
+  
+  const BASE_URL = props.baseUrl;
+    
+  let navigate = useNavigate();
+  
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [trips, setTrips] = useState([]);
