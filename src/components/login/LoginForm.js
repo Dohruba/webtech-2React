@@ -7,11 +7,11 @@ const LoginForm = (props) => {
   let navigate = useNavigate();
   //connect Frontend to Backend
   //const BASE_URL = "https://travelsitebackend.herokuapp.com";
-
+  
   const BASE_URL = props.baseUrl;
   const [enteredMail, setEnteredMail] = useState("");
   const [enteredPass, setEnteredPass] = useState("");
-  const [logged, setLogged] = useState(false);
+  const [logged, setLogged] = useState(props.logged);
 
 
   const mailChangeHandler = (event) => {

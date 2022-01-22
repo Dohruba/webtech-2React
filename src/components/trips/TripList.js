@@ -7,7 +7,7 @@ import { useNavigate } from "react-router";
 
 const TripList = (props) => {
   
-  BASE_URL = props.baseUrl;
+  const BASE_URL = props.baseUrl;
   
   let navigate = useNavigate();
   const [error, setError] = useState(null);
