@@ -6,12 +6,10 @@ import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./MyMap.css";
-import { useNavigate } from 'react-router';
 
 const MyMap = (props) => {
 
-  if(props.location)console.log(props.location.some);
-  console.log(props);
+  const BASE_URL = props.baseUrl;
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -20,11 +18,6 @@ const MyMap = (props) => {
   let filteredVisited;
   let filteredGeo;
   let visitedCountries = [];
-  //const BASE_URL = "https://travelsitebackend.herokuapp.com";
-  const BASE_URL = "http://localhost:5000";
-
-  let navigate = useNavigate();
-
 
   let countryStyle = {
     fillColor: "black",
@@ -50,9 +43,6 @@ const MyMap = (props) => {
   };
 
   useEffect(() => {
-    if(!props.logged){
-      navigate('/');
-    }
     fetch(`${BASE_URL}/trips`, {
       method: "GET",
       credentials: "include",
@@ -104,10 +94,6 @@ const MyMap = (props) => {
     }
   };
 
-  const logout = () => {
-    props.onLogout();
-  }
-
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
@@ -115,7 +101,7 @@ const MyMap = (props) => {
   } else {
     return (
       <div>
-        <Header onLogout={logout}/>
+        <Header />
         <main style={{ paddingTop: "150px" }}>
           <MapContainer
             style={{ height: "45vh", width: "90vh" }}
