@@ -11,7 +11,7 @@ import Footer from "./components/structure/Footer";
 import mapData from "./data/mapData.json";
 
 const App = () => {
-  const BASE_URL = "http://localhost:5000";
+  const baseUrl = "http://localhost:5000";
   const [loggedIn, setLoggedIn] = useState(false);
   const loginTriedHandler = (result) => {
     setLoggedIn(result);
@@ -19,7 +19,7 @@ const App = () => {
   };
   const logoutHandler = async () =>{
     setLoggedIn(false);
-    const response = await fetch(`${BASE_URL}/logout`, {
+    const response = await fetch(`${baseUrl}/logout`, {
       method: "POST",
       credentials: "include",
     });
@@ -35,27 +35,40 @@ const App = () => {
           path="/"
           element={<LoginForm 
             onTryLogin={loginTriedHandler}
-           logged={loggedIn} baseUrl={BASE_URL}/>}
+           logged={loggedIn} 
+           baseUrl={baseUrl}/>}
         />
-        <Route exact path="/map" logged={loggedIn} element={<MyMap logged={loggedIn}
-        baseUrl={BASE_URL}/>} />
+        <Route exact path="/map" 
+        logged={loggedIn} 
+        element={<MyMap 
+          logged={loggedIn}
+        baseUrl={baseUrl}/>} />
         <Route
           exact
           path="/addTrip"
           logged={loggedIn}
-          element={<TripAdder logged={loggedIn} onLogout={logoutHandler} baseUrl={BASE_URL}/>}
+          element={<TripAdder 
+            logged={loggedIn} 
+            onLogout={logoutHandler} 
+            baseUrl={baseUrl}/>}
         />
         <Route
           exact
           path="/editTrip"
           logged={loggedIn}
-          element={<TripList logged={loggedIn} onLogout={logoutHandler} baseUrl={BASE_URL}/>}
+          element={<TripList 
+            logged={loggedIn} 
+            onLogout={logoutHandler} 
+            baseUrl={baseUrl}/>}
         />
         <Route
           exact
           path="/editTrip/:id"
           logged={loggedIn}
-          element={<TripEditor logged={loggedIn} onLogout={logoutHandler} baseUrl={BASE_URL}/>}
+          element={<TripEditor 
+            logged={loggedIn} 
+          onLogout={logoutHandler} 
+          baseUrl={baseUrl}/>}
         />
       </Routes>
       <Footer />
