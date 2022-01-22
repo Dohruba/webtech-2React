@@ -3,15 +3,14 @@ import "../styles.css";
 import { useNavigate } from 'react-router';
 import logo from '../../images/globe.png';
 
-const LoginForm = ({props, baseUrl}) => {
+const LoginForm = (props) => {
 
-  const BASE_URL = baseUrl;
+  const BASE_URL = props.baseUrl;
 
   let navigate = useNavigate();
   const [enteredMail, setEnteredMail] = useState("");
   const [enteredPass, setEnteredPass] = useState("");
   const [logged, setLogged] = useState(false);
-
 
   const mailChangeHandler = (event) => {
     setEnteredMail(event.target.value);
