@@ -1,9 +1,9 @@
 //for editing trips
 
-import Api from "../../services/Api";
+
+
 import "../styles.css";
 import TripForm from "./TripForm";
-import TripList from "./TripList";
 import Header from "../structure/Header";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router";
@@ -14,7 +14,6 @@ import React, { useState, useEffect } from "react";
 const BASE_URL = "http://localhost:5000";
 
 function TripEditor(props) {
-  const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [trips, setTrips] = useState([]);
 
@@ -38,15 +37,10 @@ function TripEditor(props) {
         .then(
           (result) => {
             if (mounted) {
-              setIsLoaded(true);
               setTrips(result);
             }
           },
           (error) => {
-            if (mounted) {
-              setIsLoaded(true);
-              setError(error);
-            }
           }
         );
     }
@@ -71,7 +65,7 @@ function TripEditor(props) {
     };
     fetch(`${BASE_URL}/trips/` + id, requestOptions)
       .then((response) => response.json())
-      .then((res) => res.status == "200");
+      .then((res) => res.status === "200");
     // navigate('/editTrip');
   };
 

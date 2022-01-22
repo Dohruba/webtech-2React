@@ -36,7 +36,7 @@ function TripAdder(props) {
     };
     fetch(`${BASE_URL}/trips`, requestOptions)
       .then((response) => response.json())
-      .then((res) => res.status == "200");
+      .then((res) => res.status === "200");
   };
 
   const logout = () => {

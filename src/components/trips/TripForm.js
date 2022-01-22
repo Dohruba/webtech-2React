@@ -5,7 +5,7 @@ import '../styles.css';
 import Moment from 'moment';
 import DropdownCountries from './DropdownCountries';
 
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation} from 'react-i18next';
 
 const TripForm = (props) => {
 
@@ -87,7 +87,7 @@ const TripForm = (props) => {
   };
 
 
-  if(trip.country.length == 0){
+  if(trip.country.length === 0){
     trip.country = "{t('description.dropdownCountry')}";
   }
   return (

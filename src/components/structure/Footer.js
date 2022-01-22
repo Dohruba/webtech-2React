@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles.css";
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation} from 'react-i18next';
 
 const lngs = {
     en: { nativeName: 'English' },
