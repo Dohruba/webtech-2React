@@ -3,16 +3,20 @@ body{
     
 }
 
+.loading-screen{
+    padding: 100px;
+    text-align: center;
+}
+
 .input-control{
     font-size: 15px;
 }
 
 .trip-details{
-    width: auto;
-    padding-top: 50px; 
+    width: 300px;
     border: grey;
     border-style: solid;
-    border-width: 1px;
+    border-width: 0.5px;
     padding: 10px;
     font-size: 17px;
 }
@@ -29,12 +33,27 @@ body{
   text-align: center;
 }
 
+
 .trip-list {
-    padding-top: 200px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    overflow-y: scroll;
+}
+
+.trip-list-map {
+    overflow-y: scroll;
+    height: 600px;
+    padding-top: 100px;
+}
+
+.trip-list-addtrip {
+    overflow-y: scroll;
+    height: 430px;
+}
+
+.trip-container{
+    padding-top: 100px;
 }
 
 .container{
@@ -58,12 +77,10 @@ body{
 .container-after-login-map {
     text-align: center;
     display: grid;
-    grid-template-rows: 120px 500px 1fr;
+    grid-template-rows: 500px;
     grid-template-columns: 75% 1fr;
     grid-template-areas: 
-      "header header"
       "main aside"
-      "footer footer"
 }
 
 .container-after-login-triplist {
@@ -107,6 +124,7 @@ main {
     padding-left: 40px;
     padding-right: 40px;
     padding-bottom: 5px;
+    background-color: white;
 }
 
 aside{
@@ -115,6 +133,7 @@ aside{
 
 footer {
     grid-area: footer;
+    text-align: center;
     position:fixed;
     bottom: 0%;
     left:0%;
@@ -221,9 +240,26 @@ a{
     font-size: 16px;
 }
 
+.map{
+    padding-top: 100px;
+}
 
 /*responsive Part*/
 @media(max-width: 790px){
+
+    .trip-list {
+        padding-top: 50px;
+    }
+
+    .map{
+        padding-top: 200px;
+        height: 600px;
+    }
+
+    .trip-container{
+        padding-top: 200px;
+    }
+
     .container-after-login-map {
       grid-template-columns: 1fr;
       grid-template-rows: 180px auto;

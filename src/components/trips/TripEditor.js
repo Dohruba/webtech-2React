@@ -1,9 +1,9 @@
 //for editing trips
 
-import Api from "../../services/Api";
+
+
 import "../styles.css";
 import TripForm from "./TripForm";
-import TripList from "./TripList";
 import Header from "../structure/Header";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router";
@@ -11,6 +11,7 @@ import React, { useState, useEffect } from "react";
 
 
 function TripEditor(props) {
+<<<<<<< HEAD
   
   const BASE_URL = props.baseUrl;
     
@@ -18,12 +19,17 @@ function TripEditor(props) {
   
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+=======
+>>>>>>> lastChanges
   const [trips, setTrips] = useState([]);
 
   const { id } = useParams(); //gets id from current route
 
   const tripToEdit = trips.find((trip) => trip.trip_id === id);
+<<<<<<< HEAD
   // console.log(tripToEdit);
+=======
+>>>>>>> lastChanges
 
   useEffect(() => {
     if (!props.logged) {
@@ -39,21 +45,16 @@ function TripEditor(props) {
         .then(
           (result) => {
             if (mounted) {
-              setIsLoaded(true);
               setTrips(result);
             }
           },
           (error) => {
-            if (mounted) {
-              setIsLoaded(true);
-              setError(error);
-            }
           }
         );
     }
     getTrips();
     return () => (mounted = false); //cleanup function
-  }, []);
+  }, [navigate, props.logged]);
 
   const handleOnSubmit = (trip) => {
     const data = {
@@ -72,7 +73,7 @@ function TripEditor(props) {
     };
     fetch(`${BASE_URL}/trips/` + id, requestOptions)
       .then((response) => response.json())
-      .then((res) => res.status == "200");
+      .then((res) => res.status === "200");
     // navigate('/editTrip');
   };
 

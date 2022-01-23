@@ -6,17 +6,23 @@ import Header from "../structure/Header";
 import "../styles.css";
 import { useNavigate } from "react-router";
 
+<<<<<<< HEAD
 function TripAdder(props){
 
   const BASE_URL = props.baseUrl;
 
+=======
+function TripAdder(props) {
+
+  const BASE_URL = props.baseUrl;
+>>>>>>> lastChanges
   let navigate = useNavigate();
 
   useEffect(() => {
     if (!props.logged) {
       navigate("/");
     }
-  }, []);
+  }, [navigate, props.logged]);
 
   const [trips, setTrips] = useState([]);
   const handleOnSubmit = (trip) => {
@@ -37,7 +43,7 @@ function TripAdder(props){
     };
     fetch(`${BASE_URL}/trips`, requestOptions)
       .then((response) => response.json())
-      .then((res) => res.status == "200");
+      .then((res) => res.status === "200");
   };
 
   const logout = () => {
@@ -47,8 +53,16 @@ function TripAdder(props){
   return (
     <React.Fragment>
       <Header onLogout={logout}/>
+<<<<<<< HEAD
       <TripList baseUrl={props.baseUrl} logged={props.logged}/>{" "}
+=======
+      <main>
+      <div className="trip-list-addtrip">
+      <TripList baseUrl={props.baseUrl} logged={props.logged}/>
+      </div>{" "}
+>>>>>>> lastChanges
       <TripForm isEditForm={false} handleOnSubmit={handleOnSubmit} />
+      </main>
     </React.Fragment>
   );
 }

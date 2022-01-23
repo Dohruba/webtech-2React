@@ -1,23 +1,39 @@
 import Header from "../structure/Header";
-import Footer from "../structure/Footer";
+import TripList from "../trips/TripList";
 import "../styles.css";
 import mapData from "../../data/mapData.json";
 import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
+import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./MyMap.css";
+<<<<<<< HEAD
 
 const MyMap = (props) => {
 
   const BASE_URL = props.baseUrl;
+=======
+import { useNavigate } from 'react-router';
+import { useTranslation} from 'react-i18next';
+
+const MyMap = (props) => {
+  const { t } = useTranslation();
+  if(props.location)console.log(props.location.some);
+  // console.log(props);
+>>>>>>> lastChanges
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [trips, setTrips] = useState([]);
   let mapGeojson = mapData;
   let filteredVisited;
-  let filteredGeo;
   let visitedCountries = [];
+<<<<<<< HEAD
+=======
+
+  const BASE_URL = props.baseUrl;
+
+  let navigate = useNavigate();
+>>>>>>> lastChanges
 
   let countryStyle = {
     fillColor: "black",
@@ -58,7 +74,7 @@ const MyMap = (props) => {
           setError(error);
         }
       );
-  }, []);
+  },[BASE_URL, navigate, props.logged]);
 
   visitedCountries = fillVisitedCountries(trips);
 
@@ -97,12 +113,19 @@ const MyMap = (props) => {
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
-    return <div>Warten bis Daten geladen sind...</div>;
+    return <div className="loading-screen">{t('description.loadtext')}</div>;
   } else {
     return (
       <div>
+<<<<<<< HEAD
         <Header />
         <main style={{ paddingTop: "150px" }}>
+=======
+        <Header onLogout={logout}/>
+        <main>
+          <div style={ {display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gridGap: 20} }>
+          <div className="map">
+>>>>>>> lastChanges
           <MapContainer
             style={{ height: "45vh", width: "90vh" }}
             zoom={3}
@@ -122,12 +145,21 @@ const MyMap = (props) => {
               onEachFeature={notVisitedCountriesStyle}
             ></GeoJSON>
           </MapContainer>
-        </main>
-      </div>
+          </div>
+            <div className="trip-list-map">
+              <TripList baseUrl={props.baseUrl} logged={props.logged}/>
+            </div>
+          </div>
+          </main>
+        </div>
     );
   }
 };
+<<<<<<< HEAD
 export default MyMap;
 
 /*
  */
+=======
+export default MyMap;
+>>>>>>> lastChanges

@@ -4,6 +4,8 @@ import '../styles.css';
 import { useNavigate } from 'react-router';
 import Moment from 'moment';
 
+import { useTranslation} from 'react-i18next';
+
 const Trip = ({
   trip_id,
   name,
@@ -14,41 +16,46 @@ const Trip = ({
 }) => {
   let navigate = useNavigate();
 
+  const { t } = useTranslation();
+
   const path = window.location.pathname;
   const [pathChanged, setPathChanged] = useState('');
 
   useEffect(()=>{
     let mounted = true;
     if(mounted){
-      if(path==='/addTrip'){
+      if(path==='/addTrip' || path==='/map'){
         setPathChanged(false);
       }else{
         setPathChanged(true);
       }
     }
     return() => mounted = false;
-  },[])
+  },[path])
 
   function formatDate(date){
     return Moment.utc(date).format("DD.MM.YYYY");
   }
 
   return (
-    <Card className="trip">
+    <Card>
       <Card.Body>
         <div className="trip-details">
-          <div>Reisename: {name}</div>
-          <div>Startdatum: {formatDate(new Date(start))} </div>
-          <div>Enddatum: {formatDate(new Date(end))} </div>
-          <div>Reiseziel: {country}</div>
+          <div>
+            {t('description.tripname')}
+            {name}
+            </div>
+          <div>{t('description.start')} {formatDate(new Date(start))} </div>
+          <div>{t('description.end')} {formatDate(new Date(end))} </div>
+          <div>{t('description.country')}  {country}</div>
         </div>
         {pathChanged
         ? <div>
         <Button variant="primary" onClick={() => navigate(`/editTrip/${trip_id}`)}>
-          Bearbeiten
+        {t('description.editBtn')}
           </Button>
         <Button variant="danger" onClick={() => handleRemoveTrip(trip_id)}>
-          Löschen
+        {t('description.delBtn')}
         </Button>
         </div>
         : null}

@@ -5,7 +5,11 @@ import '../styles.css';
 import Moment from 'moment';
 import DropdownCountries from './DropdownCountries';
 
+import { useTranslation} from 'react-i18next';
+
 const TripForm = (props) => {
+
+  const { t } = useTranslation();
 
   var isEditForm = props.isEditForm;
 
@@ -15,7 +19,7 @@ const TripForm = (props) => {
     end: '',
     country: ''});
 
-  const updateTrip = () => {
+  const updateTrip = React.useCallback( () => {
     const tripToEdit = {
     name: props.trip ? props.trip.name : '',
     start: props.trip ? props.trip.start : '',
@@ -24,14 +28,14 @@ const TripForm = (props) => {
     }
     // console.log(props);
     setTrip(tripToEdit);
-  }
+  },[props.trip]);
 
   useEffect(()=>{
     let mounted = true;
     if(mounted){
     updateTrip();}
     return() => mounted = false;
-  },[props]);
+  },[props, updateTrip]);
 
   const [errorMsg, setErrorMsg] = useState('');
   const { name, start, end, country } = trip;
@@ -43,7 +47,7 @@ const TripForm = (props) => {
 
     const allFieldsFilled = values.every((field) => {
       const value = `${field}`.trim();
-      return value !== '' && value !== '0' && value !== "Bitte Land wählen";
+      return value !== '' && value !== '0' && value !== "{t('description.dropdownCountry')}" ;
     });
 
 
@@ -65,6 +69,7 @@ const TripForm = (props) => {
 
     } else {
       errorMsg = 'Bitte alle Felder ausfüllen.';
+ //{t('description.addAlert')}
     }
     setErrorMsg(errorMsg);
   };
@@ -82,26 +87,26 @@ const TripForm = (props) => {
   };
 
 
-  if(trip.country.length == 0){
-    trip.country = "Bitte Land wählen";
+  if(trip.country.length === 0){
+    trip.country = "{t('description.dropdownCountry')}";
   }
   return (
     <div className="main-form">
-      {errorMsg && <p className="errorMsg">{errorMsg}</p>}
+      {errorMsg && <p className="errorMsg">{t('description.addAlert')}</p>}
       <Form onSubmit={handleOnSubmit}>
         <Form.Group controlId="name">
-          <Form.Label>Reisename: </Form.Label>
+          <Form.Label> {t('description.tripname')} </Form.Label>
           <Form.Control
             className="input-control"
             type="text"
             name="name"
             value={name}
-            placeholder="Reisenamen eingeben"
+            placeholder={t('description.nameinput')}
             onChange={handleInputChange}
           />
         </Form.Group>
         <Form.Group controlId="start">
-          <Form.Label>Startdatum: </Form.Label>
+          <Form.Label> {t('description.start')} </Form.Label>
           <Form.Control
             className="input-control"
             type="date"
@@ -112,7 +117,7 @@ const TripForm = (props) => {
           />
         </Form.Group>
         <Form.Group controlId="end">
-          <Form.Label>Enddatum: </Form.Label>
+          <Form.Label> {t('description.end')} </Form.Label>
           <Form.Control
             className="input-control"
             type="date"
@@ -128,9 +133,9 @@ const TripForm = (props) => {
         </Form.Group>
         {isEditForm 
         ? <Button variant="primary" type="submit" className="submit-btn">
-        Änderungen speichern </Button>
+         {t('description.submitBtn')} </Button>
         : <Button variant="primary" type="submit" className="submit-btn">
-        Hinzufügen
+        {t('description.addBtn')}
         </Button>}
         
       </Form>
