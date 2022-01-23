@@ -8,15 +8,10 @@ import { useTranslation} from 'react-i18next';
 
 const TripList = (props) => {
 
-<<<<<<< HEAD
-  const BASE_URL = props.baseUrl;
-
-=======
   const { t } = useTranslation();
   
   const BASE_URL = props.baseUrl;
   
->>>>>>> lastChanges
   let navigate = useNavigate();
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -65,11 +60,7 @@ const TripList = (props) => {
       }getTrips();
     }, 2000);
     return () => (mounted = false); //cleanup function
-<<<<<<< HEAD
-  }, [props]);
-=======
   }, [trips, BASE_URL, navigate, path, props.logged]);
->>>>>>> lastChanges
 
   const handleRemoveTrip = (id) => {
     const requestOptions = {
