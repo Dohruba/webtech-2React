@@ -28,11 +28,11 @@ body{
 .main-form {
   color: #222222;
   font-size: 17px;
-  padding-top: 100px;
+  padding-top: 10px;
   line-height: 30px;
   text-align: center;
+  overflow-y: scroll;
 }
-
 
 .trip-list {
     display: flex;
