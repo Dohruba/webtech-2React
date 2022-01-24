@@ -8,7 +8,7 @@ Turning our travel-organizing-webapp from https://github.com/simontree/webtech-2
 
 ## Netlify
 
-https://jovial-engelbart-251bed.netlify.app/
+https://blissful-bell-0df345.netlify.app
 
 ## Backend
 

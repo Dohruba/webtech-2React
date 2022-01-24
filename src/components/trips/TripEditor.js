@@ -10,8 +10,8 @@ import { useNavigate } from "react-router";
 import React, { useState, useEffect } from "react";
 
 //connect Frontend to Backend
-// const BASE_URL = "https://travelsitebackend.herokuapp.com";
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://travelsitebackend.herokuapp.com";
+// const BASE_URL = "http://localhost:5000";
 
 function TripEditor(props) {
   const [trips, setTrips] = useState([]);
