@@ -14,4 +14,4 @@ https://jovial-engelbart-251bed.netlify.app/
 
 Heroku: https://git.heroku.com/travelsitebackend.git
 
-Lokal: https://github.com/simontree/travelsiteOnlyBackend
+Für lokale Entwicklung: https://github.com/simontree/travelsiteOnlyBackend
