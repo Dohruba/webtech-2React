@@ -1,5 +1,5 @@
 # Webtech2React
-Turning our website from https://github.com/simontree/webtech-2/ into a Single page application with React
+Turning our travel-organizing-webapp from https://github.com/simontree/webtech-2/ into a Single page application with React
 
 ## Setup
 1. clone repo into local directory
