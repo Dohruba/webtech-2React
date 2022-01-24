@@ -13,7 +13,7 @@ body{
 }
 
 .trip-details{
-    width: 300px;
+    width: 250px;
     border: grey;
     border-style: solid;
     border-width: 0.5px;
@@ -28,7 +28,6 @@ body{
 .main-form {
   color: #222222;
   font-size: 17px;
-  padding-top: 100px;
   line-height: 30px;
   text-align: center;
 }
@@ -43,8 +42,8 @@ body{
 
 .trip-list-map {
     overflow-y: scroll;
-    height: 600px;
-    padding-top: 100px;
+    height: 530px;
+    padding-top: 50px;
 }
 
 .trip-list-addtrip {
@@ -241,7 +240,7 @@ a{
 }
 
 .map{
-    padding-top: 100px;
+    padding-top: 80px;
 }
 
 /*responsive Part*/
