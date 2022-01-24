@@ -119,7 +119,7 @@ const MyMap = (props) => {
           <div style={ {display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gridGap: 20} }>
           <div className="map">
           <MapContainer
-            style={{ height: "45vh", width: "90vh" }}
+            style={{ height: "40vh", width: "90vh" }}
             zoom={3}
             center={[20, 100]}
             scrollWheelZoom={true}
