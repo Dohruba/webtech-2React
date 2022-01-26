@@ -1,5 +1,5 @@
 # React Frontend for organizing travels
-Developed a fronted from scratch with VanillaJS only we migrated our website into a Single page application with React
+We developed a frontend from scratch with VanillaJS only. Afterwards we migrated our website into a Single page application with React
 
 VanillaJS-Frontend: https://github.com/simontree/webtech-2
 Node.js Backend: https://github.com/simontree/travelsiteOnlyBackend
