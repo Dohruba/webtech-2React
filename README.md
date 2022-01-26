@@ -1,8 +1,8 @@
 # React Frontend for organizing travels
 We developed a frontend from scratch with VanillaJS only. Afterwards we migrated our website into a Single page application with React
 
-VanillaJS-Frontend: https://github.com/simontree/webtech-2
-Node.js Backend: https://github.com/simontree/travelsiteOnlyBackend
+- VanillaJS-Frontend: https://github.com/simontree/webtech-2
+- Node.js Backend: https://github.com/simontree/travelsiteOnlyBackend
 
 ## Netlify 
 Our Frontend is connected to our uploaded backend on heroku and can be accessed from netlify:
