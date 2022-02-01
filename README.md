@@ -10,6 +10,10 @@ Turning our travel-organizing-webapp from https://github.com/simontree/webtech-2
 
 https://blissful-bell-0df345.netlify.app
 
+### Test-Login:
+User: testuser@yoohoo.com
+PW: testYY21.
+
 ## Backend
 
 Heroku: https://git.heroku.com/travelsitebackend.git
